@@ -1,3 +1,10 @@
+> ⭐ ***README** to coś więcej niż opis. Poprzez nie **pokazujesz swoje mocne strony** – swoją dokładność, sposób myślenia i podejście do rozwiązywania problemów. Niech Twoje README pokaże, że masz **świetne predyspozycje do rozwoju!***
+> 
+> 🎁 *Zacznij od razu. Skorzystaj z **[szablonu README i wskazówek](https://github.com/devmentor-pl/readme-template)**.* 
+
+&nbsp;
+
+
 # Table
 
 Dane [tabelaryczne](https://sjp.pwn.pl/slowniki/tabelaryczny.html) zgodnie ze [specyfikacją HTML5](https://www.w3.org/TR/2014/REC-html5-20141028/tabular-data.html) umieszczamy wykorzystując znacznik `<table>` i pokrewne.
@@ -19,13 +26,8 @@ Zanim przejdziesz do działania proponuje zapoznać się dokładniej jak działa
 
 
 
+&nbsp;
 
-
-
-
-
-
-
-
-
-
+> ⭐ ***README** to coś więcej niż opis. Poprzez nie **pokazujesz swoje mocne strony** – swoją dokładność, sposób myślenia i podejście do rozwiązywania problemów. Niech Twoje README pokaże, że masz **świetne predyspozycje do rozwoju!***
+> 
+> 🎁 *Zacznij od razu. Skorzystaj z **[szablonu README i wskazówek](https://github.com/devmentor-pl/readme-template)**.* 
