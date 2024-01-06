@@ -1,0 +1,38 @@
+{
+    "sourceFile": "src/components/Header/Header.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1704542368241,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704542564326,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,7 @@\n-import React from 'react'\n+import React from 'react';\n \n function Header() {\n-  return (\n-    <div>Header</div>\n-  )\n+    return <thead>Header</thead>;\n }\n\\ No newline at end of file\n \n-export default Header\n+export default Header;\n"
+                },
+                {
+                    "date": 1704542570282,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,7 @@\n+import React from 'react';\n+\n+function Header() {\n+    return <thead><Header></thead>;\n+}\n+\n+export default Header;\n"
+                },
+                {
+                    "date": 1704542575527,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,7 @@\n import React from 'react';\n \n function Header() {\n-    return <thead><Header></thead>;\n+    return <thead><tr></tr></thead>;\n }\n \n export default Header;\n-import React from 'react';\n-\n-function Header() {\n-    return <thead>Header</thead>;\n-}\n-\n\\ No newline at end of file\n-export default Header;\n"
+                },
+                {
+                    "date": 1704542714032,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\n \n-function Header() {\n+function Header({columns}) {\n     return (\n         <thead>\n             <tr></tr>\n         </thead>\n"
+                },
+                {
+                    "date": 1704542737451,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,11 @@\n+import React from 'react';\n+\n+function Header({ columns }) {\n+    return (\n+        <thead>\n+            <tr>{}</tr>\n+        </thead>\n+    );\n+}\n+\n+export default Header;\n"
+                }
+            ],
+            "date": 1704542368241,
+            "name": "Commit-0",
+            "content": "import React from 'react'\n\nfunction Header() {\n  return (\n    <div>Header</div>\n  )\n}\n\nexport default Header"
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "sourceFile": "src/components/Content/Content.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1704543898922,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704543908983,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,7 @@\n-import React from 'react'\n+import React from 'react';\n \n-function Content() {\n-  return (\n-    <div>Content</div>\n-  )\n+function Content({entries, }) {\n+    return <div>Content</div>;\n\\ No newline at end of file\n }\n \n-export default Content\n+export default Content;\n"
+                },
+                {
+                    "date": 1704543934250,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\n \n-function Content({entries, }) {\n+function Content({entries, columns}) {\n     return <div>Content</div>;\n }\n \n\\ No newline at end of file\n-export default Content;\n+export default Content;\n"
+                },
+                {
+                    "date": 1704543957047,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\n \n-function Content({entries, columns}) {\n+function Content({ entries, columns }) {\n     return <div>Content</div>;\n }\n \n\\ No newline at end of file\n-export default Content;\n+export default Content;\n"
+                },
+                {
+                    "date": 1704543972420,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\n \n function Content({ entries, columns }) {\n-    return <div>Content</div>;\n+    return <tbody>Content</tbody>;\n }\n \n\\ No newline at end of file\n-export default Content;\n+export default Content;\n"
+                },
+                {
+                    "date": 1704543979713,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,7 @@\n+import React from 'react';\n+\n+function Content({ entries, columns }) {\n+    return <tbody>{entries.map()}</tbody>;\n+}\n+\n+export default Content;\n"
+                },
+                {
+                    "date": 1704543986654,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,9 @@\n import React from 'react';\n \n function Content({ entries, columns }) {\n-    return <tbody>{entries.map()}</tbody>;\n+    return <tbody>{entries.map(item => {\n+      <tr></tr>\n+    })}</tbody>;\n }\n \n export default Content;\n-import React from 'react';\n-\n-function Content({ entries, columns }) {\n-    return <tbody>Content</tbody>;\n\\ No newline at end of file\n-}\n-\n-export default Content;\n"
+                },
+                {
+                    "date": 1704543996964,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React from 'react';\n \n function Content({ entries, columns }) {\n     return <tbody>{entries.map(item => {\n-      <tr key={}></tr>\n+      <tr key={item.id}></tr>\n     })}</tbody>;\n }\n \n export default Content;\n"
+                },
+                {
+                    "date": 1704544009012,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,13 @@\n+import React from 'react';\n+\n+function Content({ entries, columns }) {\n+    return (\n+        <tbody>\n+            {entries.map(item => {\n+                return <tr key={item.id}>{columns}</tr>;\n+            })}\n+        </tbody>\n+    );\n+}\n+\n+export default Content;\n"
+                }
+            ],
+            "date": 1704543898922,
+            "name": "Commit-0",
+            "content": "import React from 'react'\n\nfunction Content() {\n  return (\n    <div>Content</div>\n  )\n}\n\nexport default Content"
+        }
+    ]
+}

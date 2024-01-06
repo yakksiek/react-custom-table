@@ -1,0 +1,42 @@
+{
+    "sourceFile": "src/components/HeaderCell/HeaderCell.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1704544427829,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704544433596,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react'\n \n-function HeaderCell() {\n+function HeaderCell({}) {\n   return (\n     <div>HeaderCell</div>\n   )\n }\n"
+                },
+                {
+                    "date": 1704544506362,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,7 @@\n-import React from 'react'\n+import React from 'react';\n \n-function HeaderCell({}) {\n-  return (\n-    <div>HeaderCell</div>\n-  )\n+function HeaderCell({ column }) {\n+    return <StyledTableHeader key={column}>{column}</StyledTableHeader>;;\n\\ No newline at end of file\n }\n \n-export default HeaderCell\n+export default HeaderCell;\n"
+                },
+                {
+                    "date": 1704544511937,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,8 @@\n+import React from 'react';\n+import styled from 'styled-components';\n+\n+function HeaderCell({ column }) {\n+    return <StyledTableHeader key={column}>{column}</StyledTableHeader>;;\n+}\n+\n+export default HeaderCell;\n"
+                },
+                {
+                    "date": 1704544518586,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,13 @@\n import React from 'react';\n import styled from 'styled-components';\n \n+const StyledTableHeader = styled.th`\n+    border: 1px solid #ddd;\n+    text-align: left;\n+    padding: 8px;\n+`;\n+\n function HeaderCell({ column }) {\n     return <StyledTableHeader key={column}>{column}</StyledTableHeader>;;\n }\n \n"
+                },
+                {
+                    "date": 1704544757637,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,8 @@\n     padding: 8px;\n `;\n \n function HeaderCell({ column }) {\n-    return <StyledTableHeader key={column}>{column}</StyledTableHeader>;\n+    return <StyledTableHeader key={column}>{column}<span></span></StyledTableHeader>;\n }\n \n export default HeaderCell;\n"
+                },
+                {
+                    "date": 1704544844733,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n     return (\n         <StyledTableHeader key={column}>\n             {column}\n             <span>⌄</span>\n-            <span></span>\n+            <span>🔼</span>\n         </StyledTableHeader>\n     );\n }\n \n"
+                }
+            ],
+            "date": 1704544427829,
+            "name": "Commit-0",
+            "content": "import React from 'react'\n\nfunction HeaderCell() {\n  return (\n    <div>HeaderCell</div>\n  )\n}\n\nexport default HeaderCell"
+        }
+    ]
+}

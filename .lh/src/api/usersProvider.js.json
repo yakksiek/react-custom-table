@@ -1,0 +1,86 @@
+{
+    "sourceFile": "src/api/usersProvider.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 17,
+            "patches": [
+                {
+                    "date": 1704534068449,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704534107181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,9 @@\n-import React, { Component } from 'react'\n+import React, { Component } from 'react';\n \n-export class usersProvider extends Component {\n-  render() {\n-    return (\n-      <div>usersProvider</div>\n-    )\n-  }\n+class usersProvider {\n+    render() {\n\\ No newline at end of file\n+        return <div>usersProvider</div>;\n+    }\n }\n \n-export default usersProvider\n+export default usersProvider;\n"
+                },
+                {
+                    "date": 1704534119958,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,11 @@\n-import React, { Component } from 'react';\n+import React from 'react';\n \n class usersProvider {\n+\n+  \n     render() {\n         return <div>usersProvider</div>;\n     }\n\\ No newline at end of file\n }\n \n-export default usersProvider;\n+export default usersProvider;\n"
+                },
+                {
+                    "date": 1704534129432,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,9 @@\n+import React from 'react';\n+\n+class usersProvider {\n+  url = ''\n+\n+  \n+}\n+\n+export default usersProvider;\n"
+                },
+                {
+                    "date": 1704534155688,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,20 +1,9 @@\n import React from 'react';\n \n class usersProvider {\n-  url = ''\n+  url = ''https://dummyjson.com/users''\n \n   \n }\n \n export default usersProvider;\n-import React from 'react';\n-\n-class usersProvider {\n-\n-  \n-    render() {\n-        return <div>usersProvider</div>;\n-    }\n-}\n-\n\\ No newline at end of file\n-export default usersProvider;\n"
+                },
+                {
+                    "date": 1704534161007,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import React from 'react';\n \n class usersProvider {\n-  url = ''https://dummyjson.com/users''\n+  url = 'https://dummyjson.com/users'\n \n   \n }\n \n"
+                },
+                {
+                    "date": 1704534166491,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,11 @@\n-import React from 'react';\n \n+\n class usersProvider {\n   url = 'https://dummyjson.com/users'\n \n   \n+\n+  \n }\n \n export default usersProvider;\n"
+                },
+                {
+                    "date": 1704534175600,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,13 @@\n+\n+\n+class usersProvider {\n+  url = 'https://dummyjson.com/users'\n+\n+  getUsers() {\n+    \n+  }\n+\n+  \n+}\n+\n+export default usersProvider;\n"
+                },
+                {
+                    "date": 1704534186301,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,22 +3,12 @@\n class usersProvider {\n   url = 'https://dummyjson.com/users'\n \n   getUsers() {\n+\n     \n   }\n \n   \n }\n \n export default usersProvider;\n-\n-\n-class usersProvider {\n-  url = 'https://dummyjson.com/users'\n-\n-  \n-\n-  \n-}\n-\n-export default usersProvider;\n"
+                },
+                {
+                    "date": 1704534197858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   url = 'https://dummyjson.com/users'\n \n   getUsers() {\n \n-    \n+    return fetch('')\n   }\n \n   \n }\n"
+                },
+                {
+                    "date": 1704534212879,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   url = 'https://dummyjson.com/users'\n \n   getUsers() {\n \n-    return fetch('')\n+    return fetch('url').then(this.)\n   }\n \n   \n }\n"
+                },
+                {
+                    "date": 1704534222805,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   url = 'https://dummyjson.com/users'\n \n   getUsers() {\n \n-    return fetch('url').then(this.)\n+    return fetch('url').then(this.handleErrors).then()\n   }\n \n   \n }\n"
+                },
+                {
+                    "date": 1704534229553,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   url = 'https://dummyjson.com/users'\n \n   getUsers() {\n \n-    return fetch('url').then(this.handleErrors).then()\n+    return fetch('url').then(this.handleErrors).then(resp => resp.json);\n   }\n \n   \n }\n"
+                },
+                {
+                    "date": 1704534234868,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,13 @@\n+class usersProvider {\n+    url = 'https://dummyjson.com/users';\n+\n+    getUsers() {\n+        return fetch('url')\n+            .then(this.handleErrors)\n+            .then(resp => resp.json);\n+    }\n+\n+    this.handleErrors\n+}\n+\n+export default usersProvider;\n"
+                },
+                {
+                    "date": 1704534253804,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,17 @@\n+class usersProvider {\n+    url = 'https://dummyjson.com/users';\n+\n+    getUsers() {\n+        return fetch('url')\n+            .then(this.handleErrors)\n+            .then(resp => resp.json);\n+    }\n+\n+    handleError(resp) {\n+      if(!resp.ok) {\n+        \n+      }\n+    }\n+}\n+\n+export default usersProvider;\n"
+                },
+                {
+                    "date": 1704534265377,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,37 +8,10 @@\n     }\n \n     handleError(resp) {\n       if(!resp.ok) {\n-        \n+        throw new Error('')\n       }\n     }\n }\n \n export default usersProvider;\n-class usersProvider {\n-    url = 'https://dummyjson.com/users';\n-\n-    getUsers() {\n-        return fetch('url')\n-            .then(this.handleErrors)\n-            .then(resp => resp.json);\n-    }\n-\n-    this.handleErrors\n-}\n-\n-export default usersProvider;\n-\n-\n-class usersProvider {\n-  url = 'https://dummyjson.com/users'\n-\n-  getUsers() {\n-\n-    return fetch('url').then(this.handleErrors).then(resp => resp.json);\n-  }\n-\n-  \n-}\n-\n-export default usersProvider;\n"
+                },
+                {
+                    "date": 1704534278832,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,10 @@\n     handleError(resp) {\n         if (!resp.ok) {\n             throw new Error('Problem fetching data');\n         }\n+\n+        return resp;\n     }\n }\n \n export default usersProvider;\n"
+                },
+                {
+                    "date": 1704534794438,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,19 @@\n+url = 'https://dummyjson.com/users';\n+class UsersApi {\n+\n+    getUsers() {\n+        return fetch('url')\n+            .then(this.handleErrors)\n+            .then(resp => resp.json);\n+    }\n+\n+    handleError(resp) {\n+        if (!resp.ok) {\n+            throw new Error('Problem fetching data');\n+        }\n+\n+        return resp;\n+    }\n+}\n+\n+export default UsersApi;\n"
+                }
+            ],
+            "date": 1704534068449,
+            "name": "Commit-0",
+            "content": "import React, { Component } from 'react'\n\nexport class usersProvider extends Component {\n  render() {\n    return (\n      <div>usersProvider</div>\n    )\n  }\n}\n\nexport default usersProvider"
+        }
+    ]
+}

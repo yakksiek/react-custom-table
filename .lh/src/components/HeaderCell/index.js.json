@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/components/HeaderCell/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1704544449081,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704544454243,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,3 @@\n-import HeaderCell from \"./HeaderCell\";\n\\ No newline at end of file\n+import HeaderCell from \"./HeaderCell\";\n+\n+export default HeaderCell\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1704544449081,
+            "name": "Commit-0",
+            "content": "import HeaderCell from \"./HeaderCell\";"
+        }
+    ]
+}

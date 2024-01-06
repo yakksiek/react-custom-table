@@ -1,0 +1,34 @@
+{
+    "sourceFile": "src/db/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1704533883412,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704533890872,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,6 @@\n+const users = [\n+  {\n+    id: 1,\n+    name: 'Jack'\n+  }\n+]\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1704533900687,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,7 @@\n+const users = [\n+  {\n+    id: 1,\n+    name: 'Jack,\n+    age\n+  }\n+]\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1704533905784,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,7 @@\n const users = [\n   {\n     id: 1,\n-    name: 'Jack,\n+    name: 'Jack',\n     age\n   }\n-]\n-const users = [\n-  {\n-    id: 1,\n-    name: 'Jack'\n-  }\n-]\n-const users = [\n-  {\n-    \n-  }\n ]\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1704533911954,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,8 @@\n+const users = [\n+  {\n+    id: 1,\n+    name: 'Jack',\n+    age: 20\n+  },\n+  \n+]\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1704533883412,
+            "name": "Commit-0",
+            "content": "const users = [\n  {\n    \n  }\n]"
+        }
+    ]
+}
