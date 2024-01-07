@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
-import * as db from '../../data'
+import * as db from '../../data';
 import { getUsers } from '../../api/usersProvider';
 import Header from '../Header';
 import Content from '../Content';
 
 import { StyledTable } from './UserTable.styled';
 
-
 function UserTable() {
     const [users, setUsers] = useState([]);
-    const [searchQuery, setSearchQuery] = useState(null);
+    const [searchQuery, setSearchQuery] = useState({ value: '', field: '' });
     const [sorting, setSorting] = useState({ column: 'id', order: 'asc' });
-    // const columns = ['id', 'firstName', 'lastName', 'age', 'email'];
 
     useEffect(() => {
-        const fetchData = async (options) => {
+        const fetchData = async options => {
             const { users } = await getUsers(options);
 
             setUsers(users);
@@ -32,6 +30,11 @@ function UserTable() {
     }, [sorting]);
 
     const searchTable = newQuery => {
+        // setSearchQuery(prevQuery => {
+        //   if(prevQuery.field === newQuery.field) {
+
+        //   }
+        // });
         setSearchQuery(newQuery);
     };
 
@@ -63,7 +66,13 @@ function UserTable() {
         <div>
             SEARCH BAR
             <StyledTable>
-                <Header columns={db.columns} sorting={sorting} sortTable={sortTable} />
+                <Header
+                    columns={db.columns}
+                    sorting={sorting}
+                    handleSearch={searchTable}
+                    sortTable={sortTable}
+                    searchQuery={searchQuery}
+                />
                 <Content entries={users} columns={db.columns} />
             </StyledTable>
         </div>
