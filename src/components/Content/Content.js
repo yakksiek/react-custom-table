@@ -14,7 +14,8 @@ function Content({ entries, columns }) {
                 return (
                     <tr key={item.id}>
                         {columns.map(column => {
-                            return <StyledTableCell key={column}>{item[column]}</StyledTableCell>;
+                            const { field } = column;
+                            return <StyledTableCell key={field}>{item[field]}</StyledTableCell>;
                         })}
                     </tr>
                 );

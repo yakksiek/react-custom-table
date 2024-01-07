@@ -5,7 +5,9 @@ export function getUsers() {
 }
 
 function _fetch(options = null) {
-    return fetch(url, options).then(resp => {
+    console.log(options);
+
+    return fetch(url).then(resp => {
         if (resp.ok) {
             return resp.json();
         }

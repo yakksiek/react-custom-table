@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from 'react';
 
+import * as db from '../../data'
 import { getUsers } from '../../api/usersProvider';
 import Header from '../Header';
 import Content from '../Content';
 
 import { StyledTable } from './UserTable.styled';
 
+
 function UserTable() {
     const [users, setUsers] = useState([]);
     const [searchQuery, setSearchQuery] = useState(null);
     const [sorting, setSorting] = useState({ column: 'id', order: 'asc' });
-    const columns = ['id', 'firstName', 'lastName', 'age', 'email'];
+    // const columns = ['id', 'firstName', 'lastName', 'age', 'email'];
 
     useEffect(() => {
-        const fetchData = async () => {
-            const { users } = await getUsers();
+        const fetchData = async (options) => {
+            const { users } = await getUsers(options);
 
             setUsers(users);
         };
 
-        fetchData();
+        fetchData(searchQuery);
     }, []);
 
     useEffect(() => {
@@ -61,8 +63,8 @@ function UserTable() {
         <div>
             SEARCH BAR
             <StyledTable>
-                <Header columns={columns} sorting={sorting} sortTable={sortTable} />
-                <Content entries={users} columns={columns} />
+                <Header columns={db.columns} sorting={sorting} sortTable={sortTable} />
+                <Content entries={users} columns={db.columns} />
             </StyledTable>
         </div>
     );

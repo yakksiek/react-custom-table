@@ -1,0 +1,50 @@
+{
+    "sourceFile": "src/components/Input/Input.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1704625214226,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704625352905,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,7 @@\n-import React from 'react'\n+import React from 'react';\n \n function Input() {\n-  return (\n-    <div>Input</div>\n-  )\n+    return <input>Input</input>;\n }\n\\ No newline at end of file\n \n-export default Input\n+export default Input;\n"
+                },
+                {
+                    "date": 1704625359422,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\n \n function Input() {\n-    return <input>Input</input>;\n+    return <iinput />;\n }\n \n\\ No newline at end of file\n-export default Input;\n+export default Input;\n"
+                },
+                {
+                    "date": 1704625411502,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\n \n function Input() {\n-    return <iinput />;\n+    return <input name={}/>;\n }\n \n\\ No newline at end of file\n-export default Input;\n+export default Input;\n"
+                },
+                {
+                    "date": 1704625419510,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\n \n function Input() {\n-    return <input name={}/>;\n+    return <input name={name}/>;\n }\n \n\\ No newline at end of file\n-export default Input;\n+export default Input;\n"
+                },
+                {
+                    "date": 1704625427685,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\n \n-function Input() {\n+function Input({name}) {\n     return <input name={name}/>;\n }\n \n export default Input;\n"
+                },
+                {
+                    "date": 1704625893102,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,8 @@\n+import React from 'react';\n+import styled from 'styled-components';\n+\n+function Input({ name }) {\n+    return <input name={name} />;\n+}\n+\n+export default Input;\n"
+                },
+                {
+                    "date": 1704625907603,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,12 @@\n import React from 'react';\n import styled from 'styled-components';\n \n+const StyledInput = styled.input`\n+  marin\n+`\n+\n function Input({ name }) {\n     return <input name={name} />;\n }\n \n export default Input;\n-import React from 'react';\n-\n-function Input({name}) {\n\\ No newline at end of file\n-    return <input name={name}/>;\n-}\n-\n-export default Input;\n"
+                },
+                {
+                    "date": 1704625913035,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n     margin-top: 1rem;\n `;\n \n function Input({ name }) {\n-    return <input name={name} />;\n+    return <StyledInput name={name} />;\n }\n \n export default Input;\n"
+                }
+            ],
+            "date": 1704625214226,
+            "name": "Commit-0",
+            "content": "import React from 'react'\n\nfunction Input() {\n  return (\n    <div>Input</div>\n  )\n}\n\nexport default Input"
+        }
+    ]
+}

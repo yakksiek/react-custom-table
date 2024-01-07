@@ -7,7 +7,8 @@ function Header({ columns, sorting, sortTable }) {
         <thead>
             <tr>
                 {columns.map(column => {
-                    return <HeaderCell column={column} sorting={sorting} key={column} sortTable={sortTable} />;
+                    const { field } = column;
+                    return <HeaderCell columnData={column} sorting={sorting} key={field} sortTable={sortTable} />;
                 })}
             </tr>
         </thead>

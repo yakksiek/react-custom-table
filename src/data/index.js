@@ -21,7 +21,7 @@ export const columns = [
     },
     {
         title: 'E-mail',
-        field: 'emial',
+        field: 'email',
         filter: true,
     },
 ];
