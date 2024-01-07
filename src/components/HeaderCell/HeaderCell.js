@@ -15,9 +15,11 @@ function HeaderCell({ column, sorting, sortTable }) {
 
     return (
         <StyledTableHeader key={column} onClick={() => sortTable({ column, order: futureSortingOrder })}>
-            {column}
-            {isDescSorting && <span>🔽</span>}
-            {isAscSorting && <span>🔼</span>}
+            <div>
+                {column}
+                {isDescSorting && <span>🔽</span>}
+                {isAscSorting && <span>🔼</span>}
+            </div>
         </StyledTableHeader>
     );
 }

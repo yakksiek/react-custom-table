@@ -8,7 +8,7 @@ import { StyledTable } from './UserTable.styled';
 
 function UserTable() {
     const [users, setUsers] = useState([]);
-    // const [sortedUsers, setSortedUsers] = useState([]);
+    const [searchQuery, setSearchQuery] = useState(null);
     const [sorting, setSorting] = useState({ column: 'id', order: 'asc' });
     const columns = ['id', 'firstName', 'lastName', 'age', 'email'];
 
@@ -17,19 +17,21 @@ function UserTable() {
             const { users } = await getUsers();
 
             setUsers(users);
-            // setSortedUsers(users);
         };
 
         fetchData();
     }, []);
 
     useEffect(() => {
-        console.log(sorting.column);
-        console.log(sorting.order);
+        console.log(sorting.column, sorting.order);
         const sorted = sortUsers(users, sorting.column, sorting.order);
         setUsers(sorted);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sorting]);
+
+    const searchTable = newQuery => {
+        setSearchQuery(newQuery);
+    };
 
     const sortTable = newSorting => {
         const { column: newColumn } = newSorting;
