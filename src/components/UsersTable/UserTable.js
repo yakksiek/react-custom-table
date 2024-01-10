@@ -20,7 +20,7 @@ function UserTable() {
         };
 
         fetchData(searchQuery);
-    }, []);
+    }, [searchQuery]);
 
     useEffect(() => {
         console.log(sorting.column, sorting.order);
@@ -30,11 +30,6 @@ function UserTable() {
     }, [sorting]);
 
     const searchTable = newQuery => {
-        // setSearchQuery(prevQuery => {
-        //   if(prevQuery.field === newQuery.field) {
-
-        //   }
-        // });
         setSearchQuery(newQuery);
     };
 

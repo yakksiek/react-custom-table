@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1704369674178,
@@ -24,6 +24,10 @@
                 {
                     "date": 1704535281537,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n function App() {\n     return (\n         <div className='App'>\n             <h1>test</h1>\n+            <UserTable />\n         </div>\n     );\n }\n \n"
+                },
+                {
+                    "date": 1704890971150,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,9 @@\n-import \n+import UserTable from './components/UsersTable';\n \n function App() {\n     return (\n         <div className='App'>\n-            <h1>test</h1>\n             <UserTable />\n         </div>\n     );\n }\n"
                 }
             ],
             "date": 1704369674178,

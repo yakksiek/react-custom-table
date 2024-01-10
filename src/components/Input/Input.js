@@ -19,10 +19,10 @@ function Input({ data, handleSearch, searchQuery }) {
 
     const { value: searchValue, field: searchField } = searchQuery || {};
 
-    console.log('searchValue');
-    console.log(searchValue);
-    console.log('searchField');
-    console.log(searchField);
+    // console.log('searchValue');
+    // console.log(searchValue);
+    // console.log('searchField');
+    // console.log(searchField);
 
     const changeHandler = e => {
         const { value } = e.target;
