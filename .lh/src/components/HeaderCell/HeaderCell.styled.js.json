@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1704658302850,
@@ -16,6 +16,10 @@
                 {
                     "date": 1704658315295,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,14 @@\n import styled from 'styled-components'\n-const StyledTableHeader = styled.th`\n+\n+export const StyledTableHeader = styled.th`\n     border: 1px solid #ddd;\n     text-align: left;\n     padding: 1rem 8px;\n     vertical-align: top;\n `;\n \n-const StyledSpan = styled.span`\n+export const StyledSpan = styled.span`\n     font-size: 1.5rem;\n `;\n \n const StyledHeader = styled.header`\n"
+                },
+                {
+                    "date": 1705316248004,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,5 +17,6 @@\n     align-items: center;\n     cursor: pointer;\n     height: 2rem;\n     font-size: 1.175rem;\n+    color: rgb(195 154 100);\n `;\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1704658302850,

@@ -13,7 +13,6 @@ function UserTable() {
     const [pageOptions, setPageOptions] = useState({ limit: 10, skip: 0, total: null });
     const [searchQuery, setSearchQuery] = useState({ value: '', field: '' });
     const [sorting, setSorting] = useState({ column: 'id', order: 'asc' });
-    console.log(data);
 
     useEffect(() => {
         const fetchData = async options => {
@@ -83,7 +82,6 @@ function UserTable() {
 
     return (
         <div>
-            SEARCH BAR
             <StyledTable>
                 <Header
                     columns={db.columns}

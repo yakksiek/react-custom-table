@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const StyledTableHeader = styled.th`
     border: 1px solid #ddd;
@@ -18,4 +18,5 @@ export const StyledHeader = styled.header`
     cursor: pointer;
     height: 2rem;
     font-size: 1.175rem;
+    color: rgb(195 154 100);
 `;
