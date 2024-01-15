@@ -4,28 +4,32 @@ import * as db from '../../data';
 import { getUsers } from '../../api/usersProvider';
 import Header from '../Header';
 import Content from '../Content';
+import Button from '../Button';
 
-import { StyledTable } from './UserTable.styled';
+import { StyledTable, StyledNavigation } from './UserTable.styled';
 
 function UserTable() {
-    const [users, setUsers] = useState([]);
+    const [data, setData] = useState(null);
+    const [pageOptions, setPageOptions] = useState({ limit: 10, skip: 0, total: null });
     const [searchQuery, setSearchQuery] = useState({ value: '', field: '' });
     const [sorting, setSorting] = useState({ column: 'id', order: 'asc' });
+    console.log(data);
 
     useEffect(() => {
         const fetchData = async options => {
-            const { users } = await getUsers(options);
-
-            setUsers(users);
+            const data = await getUsers(options);
+            setData(data);
         };
 
-        fetchData(searchQuery);
-    }, [searchQuery]);
+        fetchData({ ...pageOptions, ...searchQuery });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pageOptions.skip, searchQuery]);
 
     useEffect(() => {
-        console.log(sorting.column, sorting.order);
-        const sorted = sortUsers(users, sorting.column, sorting.order);
-        setUsers(sorted);
+        if (data && data.users) {
+            const sorted = sortUsers(data.users, sorting.column, sorting.order);
+            setData(prevData => ({ ...prevData, users: sorted }));
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sorting]);
 
@@ -57,6 +61,26 @@ function UserTable() {
         });
     };
 
+    const handlePrevPage = () => {
+        if (pageOptions.skip === 0) return;
+
+        setPageOptions(prevPageOptions => {
+            const newSkip = prevPageOptions.skip - prevPageOptions.limit;
+            return { ...prevPageOptions, skip: newSkip };
+        });
+    };
+
+    const handleNextPage = () => {
+        setPageOptions(prevPageOptions => {
+            return {
+                ...prevPageOptions,
+                skip: prevPageOptions.skip + prevPageOptions.limit,
+            };
+        });
+    };
+
+    if (!data) return <h1>loading</h1>;
+
     return (
         <div>
             SEARCH BAR
@@ -68,8 +92,20 @@ function UserTable() {
                     sortTable={sortTable}
                     searchQuery={searchQuery}
                 />
-                <Content entries={users} columns={db.columns} />
+                <Content entries={data.users} columns={db.columns} />
             </StyledTable>
+            <StyledNavigation>
+                <Button disabled={data.skip === 0} clickHandler={handlePrevPage} classes='nav-pagination'>
+                    &lt;
+                </Button>
+                <Button
+                    disabled={data.total === data.skip + data.limit}
+                    clickHandler={handleNextPage}
+                    classes='nav-pagination'
+                >
+                    &gt;
+                </Button>
+            </StyledNavigation>
         </div>
     );
 }

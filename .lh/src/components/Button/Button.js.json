@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/components/Button/Button.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1704923204427,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704923224690,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react'\n \n-function Button() {\n+function Button({}) {\n   return (\n     <div>Button</div>\n   )\n }\n"
+                },
+                {
+                    "date": 1704923230104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react'\n \n-function Button({click}) {\n+function Button({clickHandler}) {\n   return (\n     <div>Button</div>\n   )\n }\n"
+                },
+                {
+                    "date": 1704923240509,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\n \n function Button({ clickHandler }) {\n-    return <div>Button</div>;\n+    return <button type=\"button\">Button</button>;\n }\n \n export default Button;\n"
+                }
+            ],
+            "date": 1704923204427,
+            "name": "Commit-0",
+            "content": "import React from 'react'\n\nfunction Button() {\n  return (\n    <div>Button</div>\n  )\n}\n\nexport default Button"
+        }
+    ]
+}

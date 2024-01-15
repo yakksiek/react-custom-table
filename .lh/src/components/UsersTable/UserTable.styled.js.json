@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1704542902469,
@@ -28,6 +28,18 @@
                 {
                     "date": 1704542974133,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n import styled from \"styled-components\";\n \n export const StyledTable = styled.table`\n   table-layout: fixed;\n-  \n+  width: 100%;\n+  border-collapse\n `\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1705315145709,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,11 @@\n+import styled from 'styled-components';\n+\n+export const StyledTable = styled.table`\n+    table-layout: fixed;\n+    width: 100%;\n+    border-collapse: collapse;\n+`;\n+\n+export const StyledNavigation = styled.div`\n+    mar\n+`\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1705315196019,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,5 +7,7 @@\n `;\n \n export const StyledNavigation = styled.div`\n     margin-top: 1rem;\n+    display: flex;\n+    gap: 1rem\n `;\n"
+                },
+                {
+                    "date": 1705315201629,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,6 +8,6 @@\n \n export const StyledNavigation = styled.div`\n     margin-top: 1rem;\n     display: flex;\n-    gap: 1rem;\n+    gap: .5rem;\n `;\n"
                 }
             ],
             "date": 1704542902469,

@@ -1,0 +1,62 @@
+{
+    "sourceFile": "src/components/Pagination/Pagination.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 11,
+            "patches": [
+                {
+                    "date": 1704923582529,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704923612386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,9 @@\n+import React from 'react'\n+\n+function Pagination({limi}) {\n+  return (\n+    <div>Pagination</div>\n+  )\n+}\n+\n+export default Pagination\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1704923638969,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,7 @@\n-import React from 'react'\n+import React from 'react';\n \n-function Pagination({limi}) {\n-  return (\n-    <div>Pagination</div>\n-  )\n+function Pagination({ limit = 1, children }) {\n+    return <>Pagination</>;\n }\n \n-export default Pagination\n-import React from 'react'\n-\n-function Pagination() {\n-  return (\n-    <div>Pagination</div>\n-  )\n\\ No newline at end of file\n-}\n-\n-export default Pagination\n+export default Pagination;\n"
+                },
+                {
+                    "date": 1704923644870,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\n \n function Pagination({ limit = 1, children }) {\n-    return <>Pagination</>;\n+    return <>{children.length}</>;\n }\n \n export default Pagination;\n"
+                },
+                {
+                    "date": 1704923651819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React from 'react';\n \n function Pagination({ limit = 1, children }) {\n-    return <>{children.length}</>;\n+    return <>{children}</>;\n }\n \n export default Pagination;\n"
+                },
+                {
+                    "date": 1704923664588,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,10 @@\n import React from 'react';\n \n function Pagination({ limit = 1, children }) {\n+  const length = children.length;\n+\n+\n     return <>{children}</>;\n }\n \n export default Pagination;\n"
+                },
+                {
+                    "date": 1704923681776,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,9 @@\n import React from 'react';\n \n-function Pagination({ limit = 1, children }) {\n-  const length = children.length;\n+function Pagination({ limit = 110, children }) {\n+    const length = children.length;\n \n-\n     return <>{children}</>;\n }\n \n export default Pagination;\n"
+                },
+                {
+                    "date": 1704923710366,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,11 @@\n import React from 'react';\n \n-function Pagination({ limit = 110, children }) {\n+function Pagination({ limit = 10, children }) {\n     const length = children.length;\n \n+    const page = 1;\n+\n     return <>{children}</>;\n }\n \n export default Pagination;\n"
+                },
+                {
+                    "date": 1704923721900,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n function Pagination({ limit = 10, children }) {\n     const length = children.length;\n \n     const page = 1;\n+    const begin = limit\n \n     return <>{children}</>;\n }\n \n"
+                },
+                {
+                    "date": 1704923730796,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n function Pagination({ limit = 10, children }) {\n     const length = children.length;\n \n     const page = 1;\n-    const begin = limit\n+    const begin = limit * page - 1\n \n     return <>{children}</>;\n }\n \n"
+                },
+                {
+                    "date": 1704923742875,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n     const length = children.length;\n \n     const page = 1;\n     const begin = limit * (page - 1);\n-    \n+    const end = page * limit;\n \n     return <>{children}</>;\n }\n \n"
+                },
+                {
+                    "date": 1704923773293,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,8 @@\n     const page = 1;\n     const begin = limit * (page - 1);\n     const end = page * limit;\n \n-    return <>{children.slice(page, li)}</>;\n+    return <>{children.slice(page, l)}</>;\n }\n \n export default Pagination;\n"
+                }
+            ],
+            "date": 1704923582529,
+            "name": "Commit-0",
+            "content": "import React from 'react'\n\nfunction Pagination() {\n  return (\n    <div>Pagination</div>\n  )\n}\n\nexport default Pagination"
+        }
+    ]
+}
