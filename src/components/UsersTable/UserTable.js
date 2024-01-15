@@ -10,14 +10,22 @@ import { StyledTable, StyledNavigation } from './UserTable.styled';
 
 function UserTable() {
     const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
     const [pageOptions, setPageOptions] = useState({ limit: 10, skip: 0, total: null });
     const [searchQuery, setSearchQuery] = useState({ value: '', field: '' });
     const [sorting, setSorting] = useState({ column: 'id', order: 'asc' });
 
     useEffect(() => {
         const fetchData = async options => {
-            const data = await getUsers(options);
-            setData(data);
+            try {
+                const data = await getUsers(options);
+                console.log(data);
+                setData(data);
+                setError(null);
+            } catch (err) {
+                console.error(err);
+                setError('Failed to fetch data');
+            }
         };
 
         fetchData({ ...pageOptions, ...searchQuery });
@@ -77,6 +85,10 @@ function UserTable() {
             };
         });
     };
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     if (!data) return <h1>loading</h1>;
 

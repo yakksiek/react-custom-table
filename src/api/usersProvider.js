@@ -5,12 +5,11 @@ export function getUsers(options = {}) {
 
     let optionsURL = '';
 
-    if (options.value !== '') {
+    if (options.value && options.value !== '') {
         optionsURL = `/filter?key=${options.field}&value=${options.value}`;
-        // optionsURL = `/search?q=${options.value}`;
     } else {
         // console.log('limit & skip');
-        optionsURL = `?limit=${options.limit || 0}&skip=${options.skip || 0}`;
+        optionsURL = `?limit=${options.limit}&skip=${options.skip}`;
     }
 
     return _fetch(optionsURL);
@@ -19,7 +18,6 @@ export function getUsers(options = {}) {
 function _fetch(optionsURL = '') {
     // console.log(optionsURL);
     return fetch(`${url}${optionsURL}`).then(resp => {
-        
         if (resp.ok) {
             return resp.json();
         }
