@@ -19,11 +19,9 @@ function UserTable() {
         const fetchData = async options => {
             try {
                 const data = await getUsers(options);
-                // console.log(data);
                 setData(data);
                 setError(null);
             } catch (err) {
-                // console.error(err);
                 setError('Failed to fetch data');
             }
         };

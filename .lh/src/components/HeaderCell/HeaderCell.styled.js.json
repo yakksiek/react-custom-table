@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 12,
+            "activePatchIndex": 13,
             "patches": [
                 {
                     "date": 1704658302850,
@@ -56,6 +56,10 @@
                 {
                     "date": 1705403586948,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n //     cursor: pointer;\n // `;\n \n export const StyledSortButton = styled.button.attrs(({$ariaLabel}) => ({\n-    'aria-label': ,\n+    'aria-label': $ariaLabel,\n }))`\n     font-size: 1.5rem;\n     border: none;\n     background-color: transparent;\n"
+                },
+                {
+                    "date": 1705410637006,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,14 +6,14 @@\n     padding: 1rem 8px;\n     vertical-align: top;\n `;\n \n-// export const StyledSortButton = styled.button`\n-//     font-size: 1.5rem;\n-//     border: none;\n-//     background-color: transparent;\n-//     cursor: pointer;\n-// `;\n+export const StyledSortButton = styled.button`\n+    font-size: 1.5rem;\n+    border: none;\n+    background-color: transparent;\n+    cursor: pointer;\n+`;\n \n export const StyledSortButton = styled.button.attrs(({ $ariaLabel }) => ({\n     'aria-label': $ariaLabel,\n }))`\n"
                 }
             ],
             "date": 1704658302850,

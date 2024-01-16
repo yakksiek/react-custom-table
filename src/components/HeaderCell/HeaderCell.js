@@ -30,8 +30,8 @@ function HeaderCell({ columnData, sorting, sortTable, handleSearch, searchQuery 
             >
                 {title}
                 <div>
-                    {isDescSorting && <StyledSortButton $ariaLabel={title}>🔽</StyledSortButton>}
-                    {isAscSorting && <StyledSortButton $ariaLabel={title}>🔼</StyledSortButton>}
+                    {isDescSorting && <StyledSortButton>🔽</StyledSortButton>}
+                    {isAscSorting && <StyledSortButton>🔼</StyledSortButton>}
                 </div>
 
                 {showSort && !isAscSorting && !isDescSorting && <StyledSortButton>🔼</StyledSortButton>}

@@ -1,7 +1,7 @@
 import { getUsers } from './usersProvider';
 import validUsers from '../testData/validUsers.json';
 
-xdescribe('getUsers()', () => {
+describe('getUsers()', () => {
     it('should fetch users when send request', async () => {
         const spy = jest.spyOn(window, 'fetch');
 
