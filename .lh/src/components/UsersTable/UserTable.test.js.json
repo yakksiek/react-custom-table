@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 8,
+            "activePatchIndex": 15,
             "patches": [
                 {
                     "date": 1705336637236,
@@ -40,6 +40,34 @@
                 {
                     "date": 1705336774152,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { render, waitFor } from '@testing-library/react';\n import UserTable from './UserTable';\n \n describe('UserTable', () => {\n-  it('shoud show an erro ')\n+  it('shoud show an error when failed to fetch data', asaync ())\n })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1705337117690,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,10 @@\n+import { render, waitFor } from '@testing-library/react';\n+import UserTable from './UserTable';\n+\n+describe('UserTable', () => {\n+  it('shoud show an error when failed to fetch data', async () => {\n+    const spy = jest.spyOn(window, 'fetch');\n+\n+    \n+  })\n+})\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1705337127302,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,13 +4,7 @@\n describe('UserTable', () => {\n   it('shoud show an error when failed to fetch data', async () => {\n     const spy = jest.spyOn(window, 'fetch');\n \n-    \n+    fetch.mock\n   })\n-})\n-import { render, waitFor } from '@testing-library/react';\n-import UserTable from './UserTable';\n-\n-describe('UserTable', () => {\n-  it('shoud show an error when failed to fetch data', asaync ())\n })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1705337132483,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,7 @@\n describe('UserTable', () => {\n   it('shoud show an error when failed to fetch data', async () => {\n     const spy = jest.spyOn(window, 'fetch');\n \n-    fetch.mock\n+    fetch.mockRejectValueOnce()\n   })\n })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1705337140149,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,10 @@\n+import { render, waitFor } from '@testing-library/react';\n+import UserTable from './UserTable';\n+\n+describe('UserTable', () => {\n+  it('shoud show an error when failed to fetch data', async () => {\n+    const spy = jest.spyOn(window, 'fetch');\n+\n+    fetch.mockRejectValueOnce(new Error(''))\n+  })\n+})\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1705337146587,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,7 @@\n describe('UserTable', () => {\n   it('shoud show an error when failed to fetch data', async () => {\n     const spy = jest.spyOn(window, 'fetch');\n \n-    fetch.mockRejectValueOnce(new Error(''))\n+    fetch.mockRejectValueOnce(new Error('Fail'))\n   })\n })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1705337153122,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,7 @@\n describe('UserTable', () => {\n   it('shoud show an error when failed to fetch data', async () => {\n     const spy = jest.spyOn(window, 'fetch');\n \n-    fetch.mockRejectValueOnce(new Error('Failed to fetch data'))\n+    fetch.mockRejectValueOnce(new Error('Failed to fetch data'));\n   })\n })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1705337245650,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,16 @@\n+import { render, waitFor } from '@testing-library/react';\n+import UserTable from './UserTable';\n+\n+describe('UserTable', () => {\n+    it('shoud show an error when failed to fetch data', async () => {\n+        const spy = jest.spyOn(window, 'fetch');\n+\n+        fetch.mockRejectValueOnce(new Error('Failed to fetch data'));\n+\n+        await waitFor(() => {\n+          expect(screen.getByText('Failed to fetch data')).toBeInTheDocument();\n+      });\n+\n+      spy.mockRestore();\n+    });\n+});\n"
                 }
             ],
             "date": 1705336637236,
