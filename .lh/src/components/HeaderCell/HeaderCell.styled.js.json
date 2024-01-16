@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 12,
             "patches": [
                 {
                     "date": 1704658302850,
@@ -20,6 +20,42 @@
                 {
                     "date": 1705316248004,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,5 +17,6 @@\n     align-items: center;\n     cursor: pointer;\n     height: 2rem;\n     font-size: 1.175rem;\n+    color: rgb(195 154 100);\n `;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1705402861947,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,22 @@\n+import styled from 'styled-components';\n+\n+export const StyledTableHeader = styled.th`\n+    border: 1px solid #ddd;\n+    text-align: left;\n+    padding: 1rem 8px;\n+    vertical-align: top;\n+`;\n+\n+export const StyledSpan = styled.button`\n+    font-size: 1.5rem;\n+`;\n+\n+export const StyledHeader = styled.header`\n+    display: flex;\n+    justify-content: space-between;\n+    align-items: center;\n+    cursor: pointer;\n+    height: 2rem;\n+    font-size: 1.175rem;\n+    color: rgb(195 154 100);\n+`;\n"
+                },
+                {
+                    "date": 1705402876798,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,10 @@\n `;\n \n export const StyledSpan = styled.button`\n     font-size: 1.5rem;\n+    border: none;\n+    back\n `;\n \n export const StyledHeader = styled.header`\n     display: flex;\n@@ -19,26 +21,4 @@\n     height: 2rem;\n     font-size: 1.175rem;\n     color: rgb(195 154 100);\n `;\n-import styled from 'styled-components'\n-\n-export const StyledTableHeader = styled.th`\n-    border: 1px solid #ddd;\n-    text-align: left;\n-    padding: 1rem 8px;\n-    vertical-align: top;\n-`;\n-\n-export const StyledSpan = styled.span`\n-    font-size: 1.5rem;\n-`;\n-\n-const StyledHeader = styled.header`\n-    display: flex;\n-    justify-content: space-between;\n-    align-items: center;\n-    cursor: pointer;\n-    height: 2rem;\n-    font-size: 1.175rem;\n-    color: rgb(195 154 100);\n-`;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1705402890129,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,10 @@\n \n export const StyledSpan = styled.button`\n     font-size: 1.5rem;\n     border: none;\n-    back\n+    background-color: transparent;\n+    cursor: pointer;\n `;\n \n export const StyledHeader = styled.header`\n     display: flex;\n"
+                },
+                {
+                    "date": 1705402905733,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n     padding: 1rem 8px;\n     vertical-align: top;\n `;\n \n-export const StyledSpan = styled.button`\n+export const StyledSortButton = styled.button`\n     font-size: 1.5rem;\n     border: none;\n     background-color: transparent;\n     cursor: pointer;\n"
+                },
+                {
+                    "date": 1705403553014,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,14 +6,14 @@\n     padding: 1rem 8px;\n     vertical-align: top;\n `;\n \n-export const StyledSortButton = styled.button`\n-    font-size: 1.5rem;\n-    border: none;\n-    background-color: transparent;\n-    cursor: pointer;\n-`;\n+// export const StyledSortButton = styled.button`\n+//     font-size: 1.5rem;\n+//     border: none;\n+//     background-color: transparent;\n+//     cursor: pointer;\n+// `;\n \n export const StyledHeader = styled.header`\n     display: flex;\n     justify-content: space-between;\n"
+                },
+                {
+                    "date": 1705403563142,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,8 +13,17 @@\n //     background-color: transparent;\n //     cursor: pointer;\n // `;\n \n+export const StyledSortButton = styled.button.attrs(props => ({\n+    'aria-label': props.$ariaLabel,\n+}))`\n+    font-size: 1.5rem;\n+    border: none;\n+    background-color: transparent;\n+    cursor: pointer;\n+`;\n+\n export const StyledHeader = styled.header`\n     display: flex;\n     justify-content: space-between;\n     align-items: center;\n"
+                },
+                {
+                    "date": 1705403572132,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n //     cursor: pointer;\n // `;\n \n export const StyledSortButton = styled.button.attrs(props => ({\n-    'aria-label': props.$ariaLabel,\n+    'aria-label': ,\n }))`\n     font-size: 1.5rem;\n     border: none;\n     background-color: transparent;\n"
+                },
+                {
+                    "date": 1705403580075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n //     background-color: transparent;\n //     cursor: pointer;\n // `;\n \n-export const StyledSortButton = styled.button.attrs(props => ({\n+export const StyledSortButton = styled.button.attrs({$ariaLabel} => ({\n     'aria-label': ,\n }))`\n     font-size: 1.5rem;\n     border: none;\n"
+                },
+                {
+                    "date": 1705403586948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n //     cursor: pointer;\n // `;\n \n export const StyledSortButton = styled.button.attrs(({$ariaLabel}) => ({\n-    'aria-label': ,\n+    'aria-label': $ariaLabel,\n }))`\n     font-size: 1.5rem;\n     border: none;\n     background-color: transparent;\n"
                 }
             ],
             "date": 1704658302850,

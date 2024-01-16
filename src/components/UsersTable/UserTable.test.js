@@ -111,5 +111,43 @@ describe('UserTable pagination', () => {
 
         const prevPageButton = screen.queryByRole('button', { name: '<' });
         expect(prevPageButton).toBeNull();
+
+        fetch.mockRestore();
+    });
+});
+
+describe('UserTable Client-Side Sorting', () => {
+    it('sorts data on the client side when a header cell sort button is clicked', async () => {
+        jest.spyOn(window, 'fetch');
+
+        const mockUsersData = {
+            users: [
+                { id: 1, firstName: 'John', lastName: 'Doe', email: 'john@example.com' },
+                { id: 2, firstName: 'Alan', lastName: 'Doe', email: 'alan@pope.com' },
+            ],
+        };
+
+        window.fetch.mockResolvedValueOnce({
+            ok: true,
+            json: async () => {
+                return { users: mockUsersData.users };
+            },
+        });
+
+        setup();
+
+        await waitFor(() => {
+            const users = screen.getAllByText(/com/i);
+
+            expect(users[0]).toHaveTextContent('john@example.com');
+        });
+
+        const headerCell = screen.getByText('Name');
+        userEvent.click(headerCell);
+
+        await waitFor(() => {
+            const sortedUsers = screen.getAllByText(/com/i);
+            expect(sortedUsers[0]).toHaveTextContent('alan@pope.com');
+        });
     });
 });

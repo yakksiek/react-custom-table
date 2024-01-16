@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Input from '../Input';
 
-import { StyledHeader, StyledTableHeader, StyledSpan } from './HeaderCell.styled';
+import { StyledHeader, StyledTableHeader, StyledSortButton } from './HeaderCell.styled';
 
 function HeaderCell({ columnData, sorting, sortTable, handleSearch, searchQuery }) {
     const [showSort, setShowSort] = useState(false);
@@ -30,11 +30,11 @@ function HeaderCell({ columnData, sorting, sortTable, handleSearch, searchQuery 
             >
                 {title}
                 <div>
-                    {isDescSorting && <StyledSpan>🔽</StyledSpan>}
-                    {isAscSorting && <StyledSpan>🔼</StyledSpan>}
+                    {isDescSorting && <StyledSortButton $ariaLabel={title}>🔽</StyledSortButton>}
+                    {isAscSorting && <StyledSortButton $ariaLabel={title}>🔼</StyledSortButton>}
                 </div>
 
-                {showSort && !isAscSorting && !isDescSorting && <StyledSpan>🔼</StyledSpan>}
+                {showSort && !isAscSorting && !isDescSorting && <StyledSortButton>🔼</StyledSortButton>}
             </StyledHeader>
             <hr />
             {filter && <Input data={columnData} handleSearch={handleSearch} searchQuery={searchQuery} />}

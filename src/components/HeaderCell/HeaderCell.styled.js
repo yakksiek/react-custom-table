@@ -7,8 +7,20 @@ export const StyledTableHeader = styled.th`
     vertical-align: top;
 `;
 
-export const StyledSpan = styled.span`
+// export const StyledSortButton = styled.button`
+//     font-size: 1.5rem;
+//     border: none;
+//     background-color: transparent;
+//     cursor: pointer;
+// `;
+
+export const StyledSortButton = styled.button.attrs(({ $ariaLabel }) => ({
+    'aria-label': $ariaLabel,
+}))`
     font-size: 1.5rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 `;
 
 export const StyledHeader = styled.header`
