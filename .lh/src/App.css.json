@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 7,
             "patches": [
                 {
                     "date": 1705316293637,
@@ -16,6 +16,26 @@
                 {
                     "date": 1705322029324,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,39 +1,38 @@\n .App {\n-  text-align: center;\n-  padding: 1rem;\n+    text-align: center;\n }\n \n .App-logo {\n-  height: 40vmin;\n-  pointer-events: none;\n+    height: 40vmin;\n+    pointer-events: none;\n }\n \n @media (prefers-reduced-motion: no-preference) {\n-  .App-logo {\n-    animation: App-logo-spin infinite 20s linear;\n-  }\n+    .App-logo {\n+        animation: App-logo-spin infinite 20s linear;\n+    }\n }\n \n .App-header {\n-  background-color: #0f1516;\n-  min-height: 100vh;\n-  display: flex;\n-  flex-direction: column;\n-  align-items: center;\n-  justify-content: center;\n-  font-size: calc(10px + 2vmin);\n-  color: white;\n+    background-color: #0f1516;\n+    min-height: 100vh;\n+    display: flex;\n+    flex-direction: column;\n+    align-items: center;\n+    justify-content: center;\n+    font-size: calc(10px + 2vmin);\n+    color: white;\n }\n \n .App-link {\n-  color: #61dafb;\n+    color: #61dafb;\n }\n \n @keyframes App-logo-spin {\n-  from {\n-    transform: rotate(0deg);\n-  }\n-  to {\n-    transform: rotate(360deg);\n-  }\n+    from {\n+        transform: rotate(0deg);\n+    }\n+    to {\n+        transform: rotate(360deg);\n+    }\n }\n"
+                },
+                {
+                    "date": 1706117135819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,40 @@\n+\n+\n+.App {\n+    text-align: center;\n+}\n+\n+.App-logo {\n+    height: 40vmin;\n+    pointer-events: none;\n+}\n+\n+@media (prefers-reduced-motion: no-preference) {\n+    .App-logo {\n+        animation: App-logo-spin infinite 20s linear;\n+    }\n+}\n+\n+.App-header {\n+    background-color: #0f1516;\n+    min-height: 100vh;\n+    display: flex;\n+    flex-direction: column;\n+    align-items: center;\n+    justify-content: center;\n+    font-size: calc(10px + 2vmin);\n+    color: white;\n+}\n+\n+.App-link {\n+    color: #61dafb;\n+}\n+\n+@keyframes App-logo-spin {\n+    from {\n+        transform: rotate(0deg);\n+    }\n+    to {\n+        transform: rotate(360deg);\n+    }\n+}\n"
+                },
+                {
+                    "date": 1706117141260,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,44 +1,8 @@\n-\n-\n-.App {\n-    text-align: center;\n+* {\n+    box-sizing: border-box;\n }\n \n-.App-logo {\n-    height: 40vmin;\n-    pointer-events: none;\n-}\n-\n-@media (prefers-reduced-motion: no-preference) {\n-    .App-logo {\n-        animation: App-logo-spin infinite 20s linear;\n-    }\n-}\n-\n-.App-header {\n-    background-color: #0f1516;\n-    min-height: 100vh;\n-    display: flex;\n-    flex-direction: column;\n-    align-items: center;\n-    justify-content: center;\n-    font-size: calc(10px + 2vmin);\n-    color: white;\n-}\n-\n-.App-link {\n-    color: #61dafb;\n-}\n-\n-@keyframes App-logo-spin {\n-    from {\n-        transform: rotate(0deg);\n-    }\n-    to {\n-        transform: rotate(360deg);\n-    }\n-}\n .App {\n     text-align: center;\n }\n \n"
+                },
+                {
+                    "date": 1706117148726,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n * {\n     box-sizing: border-box;\n+    m\n }\n \n .App {\n     text-align: center;\n"
+                },
+                {
+                    "date": 1706117154202,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n * {\n     box-sizing: border-box;\n-    m\n+    margin: 0;\n+    pad\n }\n \n .App {\n     text-align: center;\n"
+                },
+                {
+                    "date": 1706117172281,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,6 @@\n-* {\n-    box-sizing: border-box;\n-    margin: 0;\n-    pad\n-}\n \n+\n .App {\n     text-align: center;\n }\n \n"
                 }
             ],
             "date": 1705316293637,
