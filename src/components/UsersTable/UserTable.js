@@ -4,9 +4,9 @@ import * as db from '../../data';
 import { getUsers } from '../../api/usersProvider';
 import Header from '../Header';
 import Content from '../Content';
-import Button from '../Button';
+import Pagination from '../Pagination';
 
-import { StyledTable, StyledNavigation, StyledMessage } from './UserTable.styled';
+import { StyledTable, StyledMessage } from './UserTable.styled';
 
 function UserTable() {
     const [data, setData] = useState(null);
@@ -103,18 +103,7 @@ function UserTable() {
                 />
                 <Content entries={data.users} columns={db.columns} />
             </StyledTable>
-            <StyledNavigation>
-                <Button disabled={data.skip === 0} clickHandler={handlePrevPage} classes='nav-pagination'>
-                    &lt;
-                </Button>
-                <Button
-                    disabled={data.total === data.skip + data.limit}
-                    clickHandler={handleNextPage}
-                    classes='nav-pagination'
-                >
-                    &gt;
-                </Button>
-            </StyledNavigation>
+            <Pagination data={data} prevPageHandler={handlePrevPage} nextPageHandler={handleNextPage} />
             {data.total === 0 && data.users.length === 0 && (
                 <StyledMessage>Could not find entries for the query.</StyledMessage>
             )}

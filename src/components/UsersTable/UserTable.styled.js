@@ -6,12 +6,6 @@ export const StyledTable = styled.table`
     border-collapse: collapse;
 `;
 
-export const StyledNavigation = styled.div`
-    margin-top: 1rem;
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-`;
- export const StyledMessage = styled.h2`
+export const StyledMessage = styled.h2`
     text-align: center;
- `
+`;
