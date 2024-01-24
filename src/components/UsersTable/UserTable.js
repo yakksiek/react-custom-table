@@ -11,10 +11,9 @@ import { StyledTable, StyledMessage } from './UserTable.styled';
 function UserTable() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
-    const [pageOptions, setPageOptions] = useState({ limit: 10, skip: 0, total: null });
+    const [pageOptions, setPageOptions] = useState({ limit: 10, skip: 0, currentPage: 1});
     const [searchQuery, setSearchQuery] = useState({ value: '', field: '' });
     const [sorting, setSorting] = useState({ column: 'id', order: 'asc' });
-    console.log(data);
 
     useEffect(() => {
         const fetchData = async options => {
@@ -67,24 +66,7 @@ function UserTable() {
         });
     };
 
-    const handlePrevPage = () => {
-        if (pageOptions.skip === 0) return;
-
-        setPageOptions(prevPageOptions => {
-            const newSkip = prevPageOptions.skip - prevPageOptions.limit;
-            return { ...prevPageOptions, skip: newSkip };
-        });
-    };
-
-    const handleNextPage = () => {
-        setPageOptions(prevPageOptions => {
-            return {
-                ...prevPageOptions,
-                skip: prevPageOptions.skip + prevPageOptions.limit,
-            };
-        });
-    };
-
+    
     if (error) {
         return <div>Error: {error}</div>;
     }
@@ -103,7 +85,7 @@ function UserTable() {
                 />
                 <Content entries={data.users} columns={db.columns} />
             </StyledTable>
-            <Pagination data={data} prevPageHandler={handlePrevPage} nextPageHandler={handleNextPage} />
+            <Pagination data={data} setPageOptions={setPageOptions} pageOptions={pageOptions}/>
             {data.total === 0 && data.users.length === 0 && (
                 <StyledMessage>Could not find entries for the query.</StyledMessage>
             )}
