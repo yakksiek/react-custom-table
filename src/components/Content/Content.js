@@ -8,20 +8,24 @@ const StyledTableCell = styled.td`
 `;
 
 function Content({ entries, columns }) {
-    return (
-        <tbody>
-            {entries.map(item => {
-                return (
-                    <tr key={item.id}>
-                        {columns.map(column => {
-                            const { field } = column;
-                            return <StyledTableCell key={field}>{item[field]}</StyledTableCell>;
-                        })}
-                    </tr>
-                );
-            })}
-        </tbody>
-    );
+    const renderContent = entries => {
+        return (
+            <tbody>
+                {entries.map(item => {
+                    return (
+                        <tr key={item.id}>
+                            {columns.map(column => {
+                                const { field } = column;
+                                return <StyledTableCell key={field}>{item[field]}</StyledTableCell>;
+                            })}
+                        </tr>
+                    );
+                })}
+            </tbody>
+        );
+    };
+
+    return <>{renderContent(entries)}</>;
 }
 
 export default Content;

@@ -49,6 +49,39 @@ describe('UserTable', () => {
 
         fetch.mockRestore();
     });
+
+    it('displays a message when query is not found', async () => {
+        const invalidFirstName = 'invalid name';
+        const mockUsersData = {
+            users: [
+                { id: 1, firstName: 'John', lastName: 'Doe', email: 'john@example.com' },
+                { id: 2, firstName: 'Alan', lastName: 'Pope', email: 'alan@pope.com' },
+            ],
+        };
+
+        jest.spyOn(window, 'fetch');
+
+        window.fetch.mockResolvedValueOnce({
+            ok: true,
+            json: async () => {
+                return { users: mockUsersData.users };
+            },
+        });
+
+        setup();
+
+        let inputEl = null;
+        await waitFor(() => {
+            inputEl = screen.getByRole('textbox', { name: 'firstName' });
+        });
+
+        userEvent.type(inputEl, invalidFirstName);
+        await waitFor(() => {
+            expect(screen.getByText(/Could not find entries for the query./i)).toBeInTheDocument();
+        });
+
+        fetch.mockRestore();
+    });
 });
 
 describe('UserTable pagination', () => {

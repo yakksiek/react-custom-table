@@ -12,3 +12,6 @@ export const StyledNavigation = styled.div`
     gap: 0.5rem;
     justify-content: center;
 `;
+ export const StyledMessage = styled.h2`
+    text-align: center;
+ `

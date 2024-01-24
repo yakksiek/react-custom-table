@@ -25,6 +25,7 @@ function Input({ data, handleSearch, searchQuery }) {
 
     return (
         <StyledInput
+            aria-label={field}
             name={field}
             placeholder={`filter ${title}`}
             onChange={changeHandler}

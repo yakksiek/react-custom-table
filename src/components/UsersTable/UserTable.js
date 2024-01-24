@@ -6,7 +6,7 @@ import Header from '../Header';
 import Content from '../Content';
 import Button from '../Button';
 
-import { StyledTable, StyledNavigation } from './UserTable.styled';
+import { StyledTable, StyledNavigation, StyledMessage } from './UserTable.styled';
 
 function UserTable() {
     const [data, setData] = useState(null);
@@ -14,6 +14,7 @@ function UserTable() {
     const [pageOptions, setPageOptions] = useState({ limit: 10, skip: 0, total: null });
     const [searchQuery, setSearchQuery] = useState({ value: '', field: '' });
     const [sorting, setSorting] = useState({ column: 'id', order: 'asc' });
+    console.log(data);
 
     useEffect(() => {
         const fetchData = async options => {
@@ -114,6 +115,9 @@ function UserTable() {
                     &gt;
                 </Button>
             </StyledNavigation>
+            {data.total === 0 && data.users.length === 0 && (
+                <StyledMessage>Could not find entries for the query.</StyledMessage>
+            )}
         </div>
     );
 }
