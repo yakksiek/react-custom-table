@@ -10,8 +10,6 @@ export function getUsers(options = {}) {
         optionsURL = `/search?q=${query}&limit=${options.limit}&skip=${options.skip}`;
     }
 
-    console.log(optionsURL)
-
     return _fetch(optionsURL);
 }
 

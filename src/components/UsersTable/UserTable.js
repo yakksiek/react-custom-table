@@ -5,10 +5,9 @@ import { getUsers } from '../../api/usersProvider';
 import Header from '../Header';
 import Content from '../Content';
 import Pagination from '../Pagination';
+import Loader from '../Loader';
 
 import { StyledTable, StyledMessage, StyledSearchInput } from './UserTable.styled';
-
-
 
 function UserTable() {
     const [data, setData] = useState(null);
@@ -76,7 +75,12 @@ function UserTable() {
         return <div>Error: {error}</div>;
     }
 
-    if (!data) return <h1>loading</h1>;
+    if (!data)
+        return (
+            <div>
+                <Loader />
+            </div>
+        );
 
     return (
         <div>
