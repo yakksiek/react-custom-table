@@ -64,8 +64,6 @@ function Pagination({ data, setPageOptions, pageOptions }) {
         handleChangePage(selectedPage);
     };
 
-    console.log(data.total === data.limit );
-
     return (
         <StyledNavigation>
             <Button

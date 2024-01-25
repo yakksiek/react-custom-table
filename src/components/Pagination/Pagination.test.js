@@ -30,7 +30,7 @@ describe('Pagination', () => {
         expect(buttons.length).toBe(4);
     });
 
-    it('clicking next button changes to the next page', () => {
+    it('changes to next page by clicking next button', () => {
         setup(mockSetPageOptions);
 
         const nextPageButton = screen.getByRole('button', { name: '>' });
@@ -38,7 +38,7 @@ describe('Pagination', () => {
         expect(mockSetPageOptions).toHaveBeenCalledTimes(1);
     });
 
-    it('clicking a page number button changes to the respective page', () => {
+    it('changes to the respective page when clicking a button', () => {
         setup(mockSetPageOptions);
 
         const pageNumberButton = screen.getByText('2');

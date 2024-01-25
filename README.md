@@ -1,70 +1,144 @@
-# Getting Started with Create React App
+![application presentation](https://photos.app.goo.gl/wdWsbPczgMTNCXxWA)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Custom Table 👉
 
-## Available Scripts
+The React Table application is designed to demonstrate the implementation of table features, including custom pagination and basic API data fetching. It serves as an educational tool for practicing the React Testing Library, focusing on writing unit and integration tests.
 
-In the project directory, you can run:
+**Main features**:
 
-### `npm start`
+1. **Easy to implement custom table component**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Custom pagination implementation**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Unit and integration tests**
 
-### `npm test`
+    - Includes "spyOn" and "mock" usage.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. **Styled Components**
 
-### `npm run build`
+&nbsp;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 💡 Technologies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
+![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
+![Testing-Library](https://img.shields.io/badge/-TestingLibrary-%23E33332?style=for-the-badge&logo=testing-library&logoColor=white)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+&nbsp;
 
-### `npm run eject`
+## 🤔 Solutions provided in the project
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Example of userProvider test**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```javascript
+it('should fetch users with filter options', async () => {
+    const spy = jest.spyOn(window, 'fetch');
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    window.fetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ users: [] }),
+    });
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    const filterOptions = { field: 'firstName', value: 'Miles' };
+    const data = await getUsers(filterOptions);
 
-## Learn More
+    expect(data.users).toEqual([]);
+    expect(window.fetch).toHaveBeenCalledTimes(1);
+    expect(window.fetch).toHaveBeenCalledWith(
+        `https://dummyjson.com/users/filter?key=${filterOptions.field}&value=${filterOptions.value}`,
+    );
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    spy.mockRestore();
+});
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+&nbsp;
 
-### Code Splitting
+-   **Example of UseTable test**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```javascript
+function setup() {
+    render(<UserTable />);
+}
 
-### Analyzing the Bundle Size
+jest.spyOn(window, 'fetch');
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+it('should show an error when failed to fetch data', async () => {
+    setup();
 
-### Making a Progressive Web App
+    window.fetch.mockRejectedValueOnce(new Error('Failed to fetch data'));
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    await waitFor(() => {
+        expect(screen.getByText('Error: Failed to fetch data')).toBeInTheDocument();
+    });
 
-### Advanced Configuration
+    fetch.mockRestore();
+});
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+it('displays user data correctly after fetching', async () => {
+    const mockUsersData = {
+        users: [
+            { id: 1, firstName: 'John', lastName: 'Doe', email: 'john@example.com' },
+            { id: 2, firstName: 'Alan', lastName: 'Pope', email: 'alan@pope.com' },
+        ],
+    };
 
-### Deployment
+    jest.spyOn(window, 'fetch');
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    window.fetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => {
+            return { users: mockUsersData.users };
+        },
+    });
 
-### `npm run build` fails to minify
+    setup();
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    await waitFor(() => {
+        mockUsersData.users.forEach(user => {
+            expect(screen.getByText(user.firstName)).toBeInTheDocument();
+            expect(screen.getByText(user.email)).toBeInTheDocument();
+        });
+    });
+
+    fetch.mockRestore();
+});
+```
+
+&nbsp;
+
+**Example of Pagination test**
+
+```javascript
+function setup(mockSetPageOptions) {
+    render(
+        <Pagination
+            data={{ skip: 0, limit: 10, total: 100 }}
+            setPageOptions={mockSetPageOptions}
+            pageOptions={{ limit: 10, skip: 0, currentPage: 1 }}
+        />,
+    );
+}
+
+it('changes to the respective page when clicking a button', () => {
+    setup(mockSetPageOptions);
+
+    const pageNumberButton = screen.getByText('2');
+    userEvent.click(pageNumberButton);
+    expect(screen.getByText(/page 2/i)).toBeInTheDocument();
+});
+```
+
+## 🙋‍♂️ Feel free to contact me
+
+Write sth nice ;) Find me on [LinkedIn ](https://www.linkedin.com/in/marcin-kulbicki-426817a4/) or [Instagram](https://www.instagram.com/yakksiek/)
+
+&nbsp;
+
+## 👏 Thanks / Special thanks / Credits
+
+Thanks to my [Mentor - devmentor.pl](https://devmentor.pl/) – for providing me with this task and for code review.
