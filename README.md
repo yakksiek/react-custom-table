@@ -1,4 +1,4 @@
-![application presentation](https://photos.app.goo.gl/wdWsbPczgMTNCXxWA)
+![application presentation](src/assets/react-table-presentation.gif)
 
 # React Custom Table 👉
 
