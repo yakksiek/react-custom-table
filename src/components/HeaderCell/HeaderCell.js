@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { UilAngleDoubleUp } from '@iconscout/react-unicons';
+import { UilAngleDoubleDown } from '@iconscout/react-unicons';
 
 import Input from '../Input';
 
@@ -30,11 +32,23 @@ function HeaderCell({ columnData, sorting, sortTable, handleSearch, searchQuery 
             >
                 {title}
                 <div>
-                    {isDescSorting && <StyledSortButton>🔽</StyledSortButton>}
-                    {isAscSorting && <StyledSortButton>🔼</StyledSortButton>}
+                    {isDescSorting && (
+                        <StyledSortButton>
+                            <UilAngleDoubleUp color='rgb(195 154 100)' />
+                        </StyledSortButton>
+                    )}
+                    {isAscSorting && (
+                        <StyledSortButton>
+                            <UilAngleDoubleDown color='rgb(195 154 100)' />
+                        </StyledSortButton>
+                    )}
                 </div>
 
-                {showSort && !isAscSorting && !isDescSorting && <StyledSortButton>🔼</StyledSortButton>}
+                {showSort && !isAscSorting && !isDescSorting && (
+                    <StyledSortButton>
+                        <UilAngleDoubleDown color='white' />
+                    </StyledSortButton>
+                )}
             </StyledHeader>
             <hr />
             {filter && <Input data={columnData} handleSearch={handleSearch} searchQuery={searchQuery} />}
