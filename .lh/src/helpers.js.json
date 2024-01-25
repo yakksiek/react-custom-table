@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 9,
+            "activePatchIndex": 13,
             "patches": [
                 {
                     "date": 1706115755978,
@@ -44,6 +44,22 @@
                 {
                     "date": 1706116337813,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,10 +37,10 @@\n     const isPrevDisabled = currentPage <= 1;\n     const isNextDisabled = currentPage >= pages;\n \n     return {\n-        prevPage,\n-        nextPage,\n+        // prevPage,\n+        // nextPage,\n         pageNumbers: generatePageNumbers(),\n         isPrevDisabled,\n         isNextDisabled,\n         pages,\n"
+                },
+                {
+                    "date": 1706133758366,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,47 @@\n+export function generatePaginationData(currentPage, limit, length) {\n+    console.log('currentPage:' + currentPage);\n+    const pages = Math.ceil(length / limit);\n+\n+    const begin = limit * (currentPage - 1);\n+    const end = currentPage * limit;\n+\n+    const generatePageNumbers = () => {\n+        const range = [];\n+        const rangeWithDots = [];\n+\n+        for (let i = 1; i <= pages; i++) {\n+            if (i === 1 || i === pages || i === currentPage || (i >= currentPage - 1 && i <= currentPage + 1)) {\n+                range.push(i);\n+            }\n+        }\n+\n+        let l = null;\n+        for (let i of range) {\n+            if (l) {\n+                if (i - l === 2) {\n+                    rangeWithDots.push(l + 1);\n+                } else if (i - l !== 1) {\n+                    rangeWithDots.push('...'); //\n+                }\n+            }\n+            rangeWithDots.push(i);\n+            l = i;\n+        }\n+\n+        return rangeWithDots;\n+    };\n+\n+    const isPrevDisabled = currentPage <= 1;\n+    const isNextDisabled = currentPage >= pages;\n+\n+    return {\n+        // prevPage,\n+        // nextPage,\n+        pageNumbers: generatePageNumbers(),\n+        isPrevDisabled,\n+        isNextDisabled,\n+        pages,\n+        begin,\n+        end,\n+    };\n+}\n"
+                },
+                {
+                    "date": 1706133765258,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,11 +30,8 @@\n \n         return rangeWithDots;\n     };\n \n-    const isPrevDisabled = currentPage <= 1;\n-    const isNextDisabled = currentPage >= pages;\n-\n     return {\n         // prevPage,\n         // nextPage,\n         pageNumbers: generatePageNumbers(),\n@@ -44,54 +41,4 @@\n         begin,\n         end,\n     };\n }\n-export function generatePaginationData(currentPage, limit, length) {\n-    console.log('currentPage:' + currentPage);\n-    const pages = Math.ceil(length / limit);\n-\n-    const begin = limit * (currentPage - 1);\n-    const end = currentPage * limit;\n-\n-    // const prevPage = currentPage > 1 ? currentPage - 1 : 1;\n-    // const nextPage = currentPage < pages ? currentPage + 1 : pages;\n-\n-    const generatePageNumbers = () => {\n-        const range = [];\n-        const rangeWithDots = [];\n-\n-        for (let i = 1; i <= pages; i++) {\n-            if (i === 1 || i === pages || i === currentPage || (i >= currentPage - 1 && i <= currentPage + 1)) {\n-                range.push(i);\n-            }\n-        }\n-\n-        let l = null;\n-        for (let i of range) {\n-            if (l) {\n-                if (i - l === 2) {\n-                    rangeWithDots.push(l + 1);\n-                } else if (i - l !== 1) {\n-                    rangeWithDots.push('...'); //\n-                }\n-            }\n-            rangeWithDots.push(i);\n-            l = i;\n-        }\n-\n-        return rangeWithDots;\n-    };\n-\n-    const isPrevDisabled = currentPage <= 1;\n-    const isNextDisabled = currentPage >= pages;\n-\n-    return {\n-        // prevPage,\n-        // nextPage,\n-        pageNumbers: generatePageNumbers(),\n-        isPrevDisabled,\n-        isNextDisabled,\n-        pages,\n-        begin,\n-        end,\n-    };\n-}\n"
+                },
+                {
+                    "date": 1706133782628,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,10 +34,6 @@\n     return {\n         // prevPage,\n         // nextPage,\n         pageNumbers: generatePageNumbers(),\n-       \n-        pages,\n-        begin,\n-        end,\n     };\n }\n"
+                },
+                {
+                    "date": 1706133801483,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,5 @@\n export function generatePaginationData(currentPage, limit, length) {\n-    console.log('currentPage:' + currentPage);\n     const pages = Math.ceil(length / limit);\n \n     const generatePageNumbers = () => {\n         const range = [];\n"
                 }
             ],
             "date": 1706115755978,

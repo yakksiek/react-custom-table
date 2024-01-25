@@ -1,12 +1,5 @@
 export function generatePaginationData(currentPage, limit, length) {
-    console.log('currentPage:' + currentPage);
     const pages = Math.ceil(length / limit);
-
-    const begin = limit * (currentPage - 1);
-    const end = currentPage * limit;
-
-    // const prevPage = currentPage > 1 ? currentPage - 1 : 1;
-    // const nextPage = currentPage < pages ? currentPage + 1 : pages;
 
     const generatePageNumbers = () => {
         const range = [];
@@ -34,17 +27,7 @@ export function generatePaginationData(currentPage, limit, length) {
         return rangeWithDots;
     };
 
-    const isPrevDisabled = currentPage <= 1;
-    const isNextDisabled = currentPage >= pages;
-
     return {
-        // prevPage,
-        // nextPage,
         pageNumbers: generatePageNumbers(),
-        isPrevDisabled,
-        isNextDisabled,
-        pages,
-        begin,
-        end,
     };
 }
