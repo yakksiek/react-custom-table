@@ -119,3 +119,57 @@ describe('UserTable Client-Side Sorting', () => {
         });
     });
 });
+
+describe('UserTable search input', () => {
+    it('displays users based on search query', async () => {
+        const mockUsersData = {
+            users: [
+                { id: 1, firstName: 'Alice', lastName: 'Doe', email: 'alice@example.com' },
+                { id: 2, firstName: 'Alan', lastName: 'Doe', email: 'alice@example.com' },
+            ],
+        };
+
+        jest.spyOn(window, 'fetch');
+        window.fetch.mockResolvedValueOnce({
+            ok: true,
+            json: async () => mockUsersData,
+        });
+
+        setup();
+
+        let searchInput = null;
+        await waitFor(() => {
+            searchInput = screen.getByPlaceholderText('search users');
+        });
+
+        userEvent.type(searchInput, 'Alice');
+
+        await waitFor(() => {
+            expect(screen.queryByText('Alan')).not.toBeInTheDocument();
+        });
+
+        fetch.mockRestore();
+    });
+
+    it('displays a message when no users are found for the query', async () => {
+        jest.spyOn(window, 'fetch');
+        window.fetch.mockResolvedValueOnce({
+            ok: true,
+            json: async () => ({ users: [] }),
+        });
+
+        setup();
+
+        let searchInput = null;
+        await waitFor(() => {
+            searchInput = screen.getByPlaceholderText('search users');
+        }); 
+        userEvent.type(searchInput, 'NonExistentUser');
+
+        await waitFor(() => {
+            expect(screen.getByText(/Could not find entries for the query./i)).toBeInTheDocument();
+        });
+
+        fetch.mockRestore();
+    });
+});

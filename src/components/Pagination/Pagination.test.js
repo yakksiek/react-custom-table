@@ -17,20 +17,20 @@ function setup(mockSetPageOptions) {
 describe('Pagination', () => {
     const mockSetPageOptions = jest.fn();
 
-    test('renders pagination component', () => {
+    it('renders pagination component', () => {
         setup(mockSetPageOptions);
 
         expect(screen.getByText(/page 1 \/ 10/i)).toBeInTheDocument();
     });
 
-    test('renders correct number of page buttons', () => {
+    it('renders correct number of page buttons', () => {
         setup(mockSetPageOptions);
 
         const buttons = screen.getAllByRole('button');
         expect(buttons.length).toBe(4);
     });
 
-    test('clicking next button changes to the next page', () => {
+    it('clicking next button changes to the next page', () => {
         setup(mockSetPageOptions);
 
         const nextPageButton = screen.getByRole('button', { name: '>' });
@@ -38,7 +38,7 @@ describe('Pagination', () => {
         expect(mockSetPageOptions).toHaveBeenCalledTimes(1);
     });
 
-    test('clicking a page number button changes to the respective page', () => {
+    it('clicking a page number button changes to the respective page', () => {
         setup(mockSetPageOptions);
 
         const pageNumberButton = screen.getByText('2');
