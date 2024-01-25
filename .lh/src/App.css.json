@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 7,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1705316293637,
@@ -36,6 +36,10 @@
                 {
                     "date": 1706117172281,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,6 @@\n-* {\n-    box-sizing: border-box;\n-    margin: 0;\n-    pad\n-}\n \n+\n .App {\n     text-align: center;\n }\n \n"
+                },
+                {
+                    "date": 1706201176850,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n-\n-\n .App {\n     text-align: center;\n+    max-width: 1300px;\n+    ma\n }\n \n .App-logo {\n     height: 40vmin;\n"
                 }
             ],
             "date": 1705316293637,

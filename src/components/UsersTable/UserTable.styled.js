@@ -20,3 +20,4 @@ export const StyledSearchInput = styled.input`
     min-width: 250px;
     color: #fff;
 `;
+

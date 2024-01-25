@@ -1,4 +1,5 @@
 import UserTable from './components/UsersTable';
+import './App.css';
 
 function App() {
     return (
