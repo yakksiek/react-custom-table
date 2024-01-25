@@ -48,10 +48,10 @@ describe('getUsers()', () => {
         };
         window.fetch.mockResolvedValueOnce(errorResponse);
 
-        await expect(getUsers()).rejects.toMatch('Not Found');
+        await expect(getUsers({ limit: 10, skip: 0, query: 'test' })).rejects.toMatch('Not Found');
 
         expect(window.fetch).toHaveBeenCalledTimes(1);
-        expect(window.fetch).toHaveBeenCalledWith(`https://dummyjson.com/users?limit=undefined&skip=undefined`);
+        expect(window.fetch).toHaveBeenCalledWith(`https://dummyjson.com/users/search?q=test&limit=10&skip=0`);
 
         spy.mockRestore();
     });

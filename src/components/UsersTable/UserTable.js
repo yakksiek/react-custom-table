@@ -6,13 +6,15 @@ import Header from '../Header';
 import Content from '../Content';
 import Pagination from '../Pagination';
 
-import { StyledTable, StyledMessage } from './UserTable.styled';
+import { StyledTable, StyledMessage, StyledSearchInput } from './UserTable.styled';
+
+
 
 function UserTable() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
-    const [pageOptions, setPageOptions] = useState({ limit: 10, skip: 0, currentPage: 1});
-    const [searchQuery, setSearchQuery] = useState({ value: '', field: '' });
+    const [pageOptions, setPageOptions] = useState({ limit: 10, skip: 0, currentPage: 1 });
+    const [filterQuery, setFilterQuery] = useState({ value: '', field: '', query: '' });
     const [sorting, setSorting] = useState({ column: 'id', order: 'asc' });
 
     useEffect(() => {
@@ -26,9 +28,9 @@ function UserTable() {
             }
         };
 
-        fetchData({ ...pageOptions, ...searchQuery });
+        fetchData({ ...pageOptions, ...filterQuery });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pageOptions.skip, searchQuery]);
+    }, [pageOptions.skip, filterQuery]);
 
     useEffect(() => {
         if (data && data.users) {
@@ -39,7 +41,7 @@ function UserTable() {
     }, [sorting]);
 
     const searchTable = newQuery => {
-        setSearchQuery(newQuery);
+        setFilterQuery(newQuery);
     };
 
     const sortTable = newSorting => {
@@ -66,7 +68,10 @@ function UserTable() {
         });
     };
 
-    
+    const onChangeHandler = e => {
+        setFilterQuery(prevQuery => ({ ...prevQuery, query: e.target.value }));
+    };
+
     if (error) {
         return <div>Error: {error}</div>;
     }
@@ -75,17 +80,24 @@ function UserTable() {
 
     return (
         <div>
+            <StyledSearchInput
+                aria-label='query-search'
+                name='query-search'
+                placeholder='search users'
+                onChange={onChangeHandler}
+                value={filterQuery.query}
+            />
             <StyledTable>
                 <Header
                     columns={db.columns}
                     sorting={sorting}
                     handleSearch={searchTable}
                     sortTable={sortTable}
-                    searchQuery={searchQuery}
+                    filterQuery={filterQuery}
                 />
                 <Content entries={data.users} columns={db.columns} />
             </StyledTable>
-            <Pagination data={data} setPageOptions={setPageOptions} pageOptions={pageOptions}/>
+            {data.total > 0 && <Pagination data={data} setPageOptions={setPageOptions} pageOptions={pageOptions} />}
             {data.total === 0 && data.users.length === 0 && (
                 <StyledMessage>Could not find entries for the query.</StyledMessage>
             )}

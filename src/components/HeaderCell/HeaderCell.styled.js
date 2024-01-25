@@ -12,10 +12,6 @@ export const StyledSortButton = styled.button`
     border: none;
     background-color: transparent;
     cursor: pointer;
-
-    /* svg {
-        fill: rgb(195 154 100);
-    } */
 `;
 
 export const StyledHeader = styled.header`

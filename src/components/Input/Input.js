@@ -12,10 +12,10 @@ const StyledInput = styled.input`
     font-size: 0.9rem;
 `;
 
-function Input({ data, handleSearch, searchQuery }) {
+function Input({ data, handleSearch, filterQuery }) {
     const { field, title } = data;
 
-    const { value: searchValue, field: searchField } = searchQuery || {};
+    const { value: searchValue, field: searchField } = filterQuery || {};
 
     const changeHandler = e => {
         const { value } = e.target;

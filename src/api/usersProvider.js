@@ -2,12 +2,15 @@ const url = 'https://dummyjson.com/users';
 
 export function getUsers(options = {}) {
     let optionsURL = '';
+    const query = options.query || '';
 
     if (options.value && options.value !== '') {
         optionsURL = `/filter?key=${options.field}&value=${options.value}`;
     } else {
-        optionsURL = `?limit=${options.limit}&skip=${options.skip}`;
+        optionsURL = `/search?q=${query}&limit=${options.limit}&skip=${options.skip}`;
     }
+
+    console.log(optionsURL)
 
     return _fetch(optionsURL);
 }

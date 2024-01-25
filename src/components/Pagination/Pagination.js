@@ -32,7 +32,7 @@ function Pagination({ data, setPageOptions, pageOptions }) {
         });
     };
 
-    const { pageNumbers } = h.generatePaginationData(pageOptions.currentPage, data.limit, data.total);
+    const { pageNumbers } = h.generatePaginationData(pageOptions.currentPage, pageOptions.limit, data.total);
 
     const renderNumbers = numbersArr => {
         return numbersArr.map((item, index) => {
@@ -47,7 +47,7 @@ function Pagination({ data, setPageOptions, pageOptions }) {
     };
 
     const renderPageOptions = () => {
-        const totalPages = Math.ceil(data.total / data.limit);
+        const totalPages = Math.ceil(data.total / pageOptions.limit);
         let options = [];
         for (let i = 1; i <= totalPages; i++) {
             options.push(
@@ -71,7 +71,7 @@ function Pagination({ data, setPageOptions, pageOptions }) {
             </Button>
             <StyledNagivationList>{renderNumbers(pageNumbers)}</StyledNagivationList>
             <Button
-                disabled={data.total === data.skip + data.limit}
+                disabled={data.total === data.skip + pageOptions.limit}
                 clickHandler={() => handleChangePage('next')}
                 classes='nav-pagination'
             >

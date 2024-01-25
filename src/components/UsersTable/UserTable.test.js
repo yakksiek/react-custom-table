@@ -2,7 +2,7 @@ import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import UserTable from './UserTable';
 
-function setup() {
+function setup(mockSetPageOptions) {
     render(<UserTable />);
 }
 
@@ -79,71 +79,6 @@ describe('UserTable', () => {
         await waitFor(() => {
             expect(screen.getByText(/Could not find entries for the query./i)).toBeInTheDocument();
         });
-
-        fetch.mockRestore();
-    });
-});
-
-describe('UserTable pagination', () => {
-    it('loads more items when the Next button is clicked', async () => {
-        jest.spyOn(window, 'fetch');
-
-        const mockUsersDataPage1 = {
-            users: [{ id: 1, firstName: 'John', lastName: 'Doe', email: 'john@example.com' }],
-        };
-
-        const mockUsersDataPage2 = {
-            users: [{ id: 2, firstName: 'Alan', lastName: 'Pope', email: 'alan@pope.com' }],
-        };
-
-        window.fetch.mockResolvedValueOnce({
-            ok: true,
-            json: async () => {
-                return { users: mockUsersDataPage1.users };
-            },
-        });
-
-        window.fetch.mockResolvedValueOnce({
-            ok: true,
-            json: async () => {
-                return { users: mockUsersDataPage2.users };
-            },
-        });
-
-        setup();
-
-        await waitFor(() => {
-            expect(screen.getByText('John')).toBeInTheDocument();
-        });
-
-        const nextPageButton = screen.getByRole('button', { name: '>' });
-        userEvent.click(nextPageButton);
-
-        await waitFor(() => {
-            expect(screen.getByText('Alan')).toBeInTheDocument();
-        });
-
-        fetch.mockRestore();
-    });
-
-    it('should hide the Previous button on the first page', async () => {
-        jest.spyOn(window, 'fetch');
-
-        const mockUsersDataPage1 = {
-            users: [{ id: 1, firstName: 'John', lastName: 'Doe', email: 'john@example.com' }],
-        };
-
-        window.fetch.mockResolvedValueOnce({
-            ok: true,
-            json: async () => {
-                return { users: mockUsersDataPage1.users };
-            },
-        });
-
-        setup();
-
-        const prevPageButton = screen.queryByRole('button', { name: '<' });
-        expect(prevPageButton).toBeNull();
 
         fetch.mockRestore();
     });

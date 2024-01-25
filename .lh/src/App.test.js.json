@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1704533348110,
@@ -20,6 +20,10 @@
                 {
                     "date": 1706177023490,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,8 @@\n+import { render, screen } from '@testing-library/react';\n+import App from './App';\n+\n+xtest('renders learn react link', () => {\n+  render(<App />);\n+  const linkElement = screen.getByText(/users/i);\n+  expect(linkElement).toBeInTheDocument();\n+});\n"
+                },
+                {
+                    "date": 1706199783530,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,8 @@\n import { render, screen } from '@testing-library/react';\n import App from './App';\n \n-xtest('renders learn react link', () => {\n+test('renders learn react link', () => {\n   render(<App />);\n   const linkElement = screen.getByText(/users/i);\n   expect(linkElement).toBeInTheDocument();\n });\n-import { render, screen } from '@testing-library/react';\n-import App from './App';\n-\n-xtest('renders learn react link', () => {\n-  render(<App />);\n-  const linkElement = screen.getByText(/users/i);\n-  expect(linkElement).toBeInTheDocument();\n-});\n"
                 }
             ],
             "date": 1704533348110,

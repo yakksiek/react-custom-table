@@ -2,7 +2,7 @@ import React from 'react';
 
 import HeaderCell from '../HeaderCell/HeaderCell';
 
-function Header({ columns, sorting, sortTable, handleSearch, searchQuery }) {
+function Header({ columns, sorting, sortTable, handleSearch, filterQuery }) {
     return (
         <thead>
             <tr>
@@ -15,7 +15,7 @@ function Header({ columns, sorting, sortTable, handleSearch, searchQuery }) {
                             key={field}
                             sortTable={sortTable}
                             handleSearch={handleSearch}
-                            searchQuery={searchQuery}
+                            filterQuery={filterQuery}
                         />
                     );
                 })}

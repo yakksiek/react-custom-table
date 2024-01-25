@@ -6,7 +6,7 @@ import Input from '../Input';
 
 import { StyledHeader, StyledTableHeader, StyledSortButton } from './HeaderCell.styled';
 
-function HeaderCell({ columnData, sorting, sortTable, handleSearch, searchQuery }) {
+function HeaderCell({ columnData, sorting, sortTable, handleSearch, filterQuery }) {
     const [showSort, setShowSort] = useState(false);
     const { field, title, filter } = columnData;
 
@@ -51,7 +51,7 @@ function HeaderCell({ columnData, sorting, sortTable, handleSearch, searchQuery 
                 )}
             </StyledHeader>
             <hr />
-            {filter && <Input data={columnData} handleSearch={handleSearch} searchQuery={searchQuery} />}
+            {filter && <Input data={columnData} handleSearch={handleSearch} filterQuery={filterQuery} />}
         </StyledTableHeader>
     );
 }
