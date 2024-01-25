@@ -15,10 +15,6 @@ describe('getUsers()', () => {
         const data = await getUsers();
         expect(data.users).toBe(validUsers);
         expect(window.fetch).toHaveBeenCalledTimes(1);
-        // nie wiem, dalczego ten test nie przechodzi
-        // Expected: "https://dummyjson.com/users?limit=10&skip=0"
-        // Received: "https://dummyjson.com/users/filter?key=undefined&value=undefined"
-        // expect(window.fetch).toHaveBeenCalledWith('https://dummyjson.com/users?limit=10&skip=0');
 
         spy.mockRestore();
     });

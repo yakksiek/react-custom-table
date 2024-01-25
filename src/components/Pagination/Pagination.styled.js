@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import downArrowImage from '../../assets/down-arrow-svgrepo-com.svg';
 
-export const StyledNavigation = styled.div`
+export const StyledNavigation = styled.nav`
     margin-top: 1rem;
     display: flex;
     gap: 0.5rem;
@@ -10,21 +10,31 @@ export const StyledNavigation = styled.div`
     gap: 1rem;
 `;
 
-export const StyledNagivationList = styled.ul`
+export const StyledNagivationList = styled.ul.attrs({
+    role: 'navigation',
+})`
     list-style: none;
     display: flex;
     align-items: center;
     border-bottom: 1px solid transparent;
 
-    li {
-        margin: 1rem;
-        transition: transform 0.2s ease;
+    button {
+        background-color: transparent;
+        border: none;
+        color: #fff;
+        display: flex;
+        align-items: center;
 
         &.active {
             color: rgb(195 154 100);
             font-weight: bold;
             font-size: 1.25rem;
         }
+    }
+
+    li {
+        margin: 1rem;
+        transition: transform 0.2s ease;
 
         &.disabled {
             pointer-events: none;

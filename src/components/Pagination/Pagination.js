@@ -3,7 +3,7 @@ import React from 'react';
 import * as h from '../../helpers';
 import Button from '../Button';
 
-import { StyledNagivationList, StyledNavigation, StyledSelect  } from './Pagination.styled';
+import { StyledNagivationList, StyledNavigation, StyledSelect } from './Pagination.styled';
 
 function Pagination({ data, setPageOptions, pageOptions }) {
     const handleChangePage = change => {
@@ -39,8 +39,8 @@ function Pagination({ data, setPageOptions, pageOptions }) {
             const classActive = item === pageOptions.currentPage ? 'active' : '';
             const disabled = item === '...' ? 'disabled' : '';
             return (
-                <li className={`${classActive} ${disabled}`} key={index} onClick={() => handleChangePage(item)}>
-                    {item}
+                <li className={disabled} key={index} onClick={() => handleChangePage(item)}>
+                    {disabled ? item : <button className={classActive}>{item}</button>}
                 </li>
             );
         });
