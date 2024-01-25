@@ -64,14 +64,20 @@ function Pagination({ data, setPageOptions, pageOptions }) {
         handleChangePage(selectedPage);
     };
 
+    console.log(data.total === data.limit );
+
     return (
         <StyledNavigation>
-            <Button disabled={data.skip === 0} clickHandler={() => handleChangePage('prev')} classes='nav-pagination'>
+            <Button
+                disabled={data.skip === 0}
+                clickHandler={() => handleChangePage('prev')}
+                classes='nav-pagination'
+            >
                 &lt;
             </Button>
             <StyledNagivationList>{renderNumbers(pageNumbers)}</StyledNagivationList>
             <Button
-                disabled={data.total === data.skip + pageOptions.limit}
+                disabled={data.total === data.limit}
                 clickHandler={() => handleChangePage('next')}
                 classes='nav-pagination'
             >

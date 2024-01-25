@@ -16,6 +16,8 @@ function UserTable() {
     const [filterQuery, setFilterQuery] = useState({ value: '', field: '', query: '' });
     const [sorting, setSorting] = useState({ column: 'id', order: 'asc' });
 
+    console.log(data);
+
     useEffect(() => {
         const fetchData = async options => {
             try {
@@ -68,7 +70,7 @@ function UserTable() {
     };
 
     const onChangeHandler = e => {
-        setFilterQuery(prevQuery => ({ ...prevQuery, query: e.target.value }));
+        setFilterQuery(prevQuery => ({ ...prevQuery, query: e.target.value, skip: 0, currentPage: 1 }));
     };
 
     if (error) {
