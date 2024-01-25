@@ -61,7 +61,7 @@ export const StyledSelect = styled.select`
     padding-right: 30px;
     background-image: url(${downArrowImage});
     background-repeat: no-repeat;
-    background-position: calc(100% - 10px) center;
+    background-position: calc(100% - 6px) center;
     background-size: 18px;
     filter: brightness(0) invert(1);
 
