@@ -1,5 +1,6 @@
 {
-    "name": "task-react-testing",
+    "homepage": "https://yakksiek.github.com/react-custom-table", 
+    "name": "react-testing",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -15,6 +16,8 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
         "start": "BROWSER=none react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
@@ -39,6 +42,7 @@
         ]
     },
     "devDependencies": {
-        "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+        "gh-pages": "^4.0.0"
     }
 }
