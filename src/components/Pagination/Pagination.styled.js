@@ -8,6 +8,12 @@ export const StyledNavigation = styled.nav`
     justify-content: center;
     align-items: center;
     gap: 1rem;
+
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `;
 
 export const StyledNagivationList = styled.ul.attrs({
