@@ -1,6 +1,6 @@
 ![application presentation](src/assets/react-table-presentation.gif)
 
-# React Custom Table 👉
+# React Custom Table 👉 ([live version](https://yakksiek.github.io/react-custom-table/))
 
 The React Table application is designed to demonstrate the implementation of table features, including custom pagination and basic API data fetching. It serves as an educational tool for practicing the React Testing Library, focusing on writing unit and integration tests.
 
