@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/react-custom-table/static/css/main.a63f25b8.css",
+    "main.js": "/react-custom-table/static/js/main.7e964c58.js",
+    "static/js/787.f80dcad3.chunk.js": "/react-custom-table/static/js/787.f80dcad3.chunk.js",
+    "static/media/down-arrow-svgrepo-com.svg": "/react-custom-table/static/media/down-arrow-svgrepo-com.4a7cc39071b1b39e0f6010cecb58bdbe.svg",
+    "index.html": "/react-custom-table/index.html",
+    "main.a63f25b8.css.map": "/react-custom-table/static/css/main.a63f25b8.css.map",
+    "main.7e964c58.js.map": "/react-custom-table/static/js/main.7e964c58.js.map",
+    "787.f80dcad3.chunk.js.map": "/react-custom-table/static/js/787.f80dcad3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a63f25b8.css",
+    "static/js/main.7e964c58.js"
+  ]
+}
