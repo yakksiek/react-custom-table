@@ -7,21 +7,21 @@ export const columns = [
     {
         title: 'Name',
         field: 'firstName',
-        filter: true,
+        filter: false,
     },
     {
         title: 'Surname',
         field: 'lastName',
-        filter: true,
+        filter: false,
     },
     {
         title: 'Age',
         field: 'age',
-        filter: false,
+        filter: true,
     },
     {
         title: 'E-mail',
         field: 'email',
-        filter: true,
+        filter: false,
     },
 ];

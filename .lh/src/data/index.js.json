@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1704623022921,
@@ -12,6 +12,10 @@
                 {
                     "date": 1704623034938,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-const columns = [\n+export const columns = [\n     {\n         title: 'id',\n         field: 'id',\n         filter: false,\n"
+                },
+                {
+                    "date": 1707827834098,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,22 +6,22 @@\n     },\n     {\n         title: 'Name',\n         field: 'firstName',\n-        filter: true,\n+        filter: false,\n     },\n     {\n         title: 'Surname',\n         field: 'lastName',\n-        filter: true,\n+        filter: false,\n     },\n     {\n         title: 'Age',\n         field: 'age',\n-        filter: false,\n+        filter: true,\n     },\n     {\n         title: 'E-mail',\n         field: 'email',\n-        filter: true,\n+        filter: false,\n     },\n ];\n"
                 }
             ],
             "date": 1704623022921,
