@@ -51,31 +51,30 @@ describe('UserTable', () => {
     });
 
     it('displays a message when query is not found', async () => {
-        const invalidFirstName = 'invalid name';
-        const mockUsersData = {
-            users: [
-                { id: 1, firstName: 'John', lastName: 'Doe', email: 'john@example.com' },
-                { id: 2, firstName: 'Alan', lastName: 'Pope', email: 'alan@pope.com' },
-            ],
-        };
+        const invalidAge = '100';
+        const mockUsersData = [
+            { id: 1, firstName: 'John', lastName: 'Doe', email: 'john@example.com', age: 32 },
+            { id: 2, firstName: 'Alan', lastName: 'Pope', email: 'alan@pope.com', age: 26 },
+        ];
 
         jest.spyOn(window, 'fetch');
 
         window.fetch.mockResolvedValueOnce({
             ok: true,
             json: async () => {
-                return { users: mockUsersData.users };
+                return { users: mockUsersData };
             },
         });
 
         setup();
 
-        let inputEl = null;
         await waitFor(() => {
-            inputEl = screen.getByRole('textbox', { name: 'firstName' });
+            expect(screen.getByPlaceholderText('filter Age')).toBeInTheDocument();
         });
 
-        userEvent.type(inputEl, invalidFirstName);
+        const searchInput = screen.getByPlaceholderText('filter Age');
+
+        userEvent.type(searchInput, invalidAge);
         await waitFor(() => {
             expect(screen.getByText(/Could not find entries for the query./i)).toBeInTheDocument();
         });
@@ -163,7 +162,7 @@ describe('UserTable search input', () => {
         let searchInput = null;
         await waitFor(() => {
             searchInput = screen.getByPlaceholderText('search users');
-        }); 
+        });
         userEvent.type(searchInput, 'NonExistentUser');
 
         await waitFor(() => {

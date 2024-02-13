@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HeaderCell from '../HeaderCell/HeaderCell';
+import HeaderCell from '../HeaderCell';
 
 function Header({ columns, sorting, sortTable, handleSearch, filterQuery }) {
     return (

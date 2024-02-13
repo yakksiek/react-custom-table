@@ -13,10 +13,8 @@ function UserTable() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [pageOptions, setPageOptions] = useState({ limit: 10, skip: 0, currentPage: 1 });
-    const [filterQuery, setFilterQuery] = useState({ value: '', field: '', query: '' });
+    const [filterQuery, setFilterQuery] = useState({ value: '', field: '' });
     const [sorting, setSorting] = useState({ column: 'id', order: 'asc' });
-
-    console.log(data);
 
     useEffect(() => {
         const fetchData = async options => {
@@ -42,6 +40,8 @@ function UserTable() {
     }, [sorting]);
 
     const searchTable = newQuery => {
+        console.log('newQuery');
+        console.log(newQuery);
         setFilterQuery(newQuery);
     };
 
