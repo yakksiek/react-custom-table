@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
 
 const StyledInput = styled.input`
@@ -12,12 +12,25 @@ const StyledInput = styled.input`
     font-size: 0.9rem;
 `;
 
-function Input({ data, handleSearch, filterQuery }) {
+interface InputProps {
+    data: {
+        title: string;
+        field: string;
+        filter?: boolean;
+    };
+    handleSearch: ({ field, value }: { field: string; value: string }) => void;
+    filterQuery?: {
+        value: string;
+        field: string;
+    };
+}
+
+function Input({ data, handleSearch, filterQuery }: InputProps) {
     const { field, title } = data;
 
     const { value: searchValue, field: searchField } = filterQuery || {};
 
-    const changeHandler = e => {
+    const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
 
         handleSearch({ field, value });
