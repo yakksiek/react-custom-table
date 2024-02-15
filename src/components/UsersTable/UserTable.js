@@ -68,7 +68,6 @@ function UserTable() {
     };
 
     const onChangeHandler = e => {
-        console.log(e);
         setFilterQuery(prevQuery => ({ ...prevQuery, query: e.target.value }));
     };
 

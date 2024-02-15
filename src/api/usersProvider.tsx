@@ -1,14 +1,19 @@
 const url = 'https://dummyjson.com/users';
 
-// interface UserFetchOptions {
-//     query?: string;
-//     value?: string;
-//     field?: string;
-//     limit?: number;
-//     skip?: number;
-// }
+interface UserFetchOptions {
+    query?: string;
+    value?: string;
+    field?: string;
+    limit?: number;
+    skip?: number;
+}
 
-export function getUsers(options = {}) {
+interface FetchStatus {
+    ok: boolean;
+    status: number;
+}
+
+export function getUsers(options: UserFetchOptions = {}) {
     let optionsURL = '';
     const query = options.query || '';
 
@@ -21,7 +26,7 @@ export function getUsers(options = {}) {
     return _fetch(optionsURL);
 }
 
-function _fetch(optionsURL = '') {
+function _fetch(optionsURL: string = ''): Promise<FetchStatus> {
     return fetch(`${url}${optionsURL}`).then(resp => {
         if (resp.ok) {
             return resp.json();
