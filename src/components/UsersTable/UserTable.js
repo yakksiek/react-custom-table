@@ -13,7 +13,7 @@ function UserTable() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [pageOptions, setPageOptions] = useState({ limit: 10, skip: 0, currentPage: 1 });
-    const [filterQuery, setFilterQuery] = useState({ value: '', field: '' });
+    const [filterQuery, setFilterQuery] = useState({ value: '', field: '', query: '' });
     const [sorting, setSorting] = useState({ column: 'id', order: 'asc' });
 
     useEffect(() => {
@@ -40,7 +40,7 @@ function UserTable() {
     }, [sorting]);
 
     const searchTable = newQuery => {
-        setFilterQuery(newQuery);
+        setFilterQuery(prevQuery => ({ ...prevQuery, ...newQuery }));
     };
 
     const sortTable = newSorting => {
@@ -68,7 +68,8 @@ function UserTable() {
     };
 
     const onChangeHandler = e => {
-        setFilterQuery(prevQuery => ({ ...prevQuery, query: e.target.value, skip: 0, currentPage: 1 }));
+        console.log(e);
+        setFilterQuery(prevQuery => ({ ...prevQuery, query: e.target.value }));
     };
 
     if (error) {

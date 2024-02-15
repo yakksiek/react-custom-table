@@ -1,5 +1,13 @@
 const url = 'https://dummyjson.com/users';
 
+// interface UserFetchOptions {
+//     query?: string;
+//     value?: string;
+//     field?: string;
+//     limit?: number;
+//     skip?: number;
+// }
+
 export function getUsers(options = {}) {
     let optionsURL = '';
     const query = options.query || '';
