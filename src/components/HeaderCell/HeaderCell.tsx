@@ -2,11 +2,20 @@ import React, { useState } from 'react';
 import { UilAngleDoubleUp } from '@iconscout/react-unicons';
 import { UilAngleDoubleDown } from '@iconscout/react-unicons';
 
+import * as t from '../../models/interfaces';
 import Input from '../Input';
 
 import { StyledHeader, StyledTableHeader, StyledSortButton } from './HeaderCell.styled';
 
-function HeaderCell({ columnData, sorting, sortTable, handleSearch, filterQuery }) {
+interface HeaderCellProps {
+    columnData: t.HeaderCell;
+    sorting: t.Sorting;
+    sortTable: (newSorting: t.Sorting) => t.Sorting;
+    handleSearch: ({ field, value }: { field: string; value: string }) => void;
+    filterQuery?: t.FilterQuery;
+}
+
+function HeaderCell({ columnData, sorting, sortTable, handleSearch, filterQuery }: HeaderCellProps) {
     const [showSort, setShowSort] = useState(false);
     const { field, title, filter } = columnData;
 

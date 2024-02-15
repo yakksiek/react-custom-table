@@ -40,8 +40,6 @@ function UserTable() {
     }, [sorting]);
 
     const searchTable = newQuery => {
-        console.log('newQuery');
-        console.log(newQuery);
         setFilterQuery(newQuery);
     };
 

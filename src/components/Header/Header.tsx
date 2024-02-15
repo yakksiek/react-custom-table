@@ -1,8 +1,17 @@
 import React from 'react';
 
 import HeaderCell from '../HeaderCell';
+import * as t from '../../models/interfaces';
 
-function Header({ columns, sorting, sortTable, handleSearch, filterQuery }) {
+interface HeaderProps {
+    columns: t.HeaderCell[];
+    sorting: t.Sorting;
+    sortTable: (newSorting: t.Sorting) => t.Sorting;
+    handleSearch: ({ field, value }: { field: string; value: string }) => void;
+    filterQuery?: t.FilterQuery
+}
+
+function Header({ columns, sorting, sortTable, handleSearch, filterQuery }: HeaderProps) {
     return (
         <thead>
             <tr>
