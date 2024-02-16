@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import * as db from '../../data';
+// import * as t from '../../models/interfaces';
 import { getUsers } from '../../api/usersProvider';
 import Header from '../Header';
 import Content from '../Content';

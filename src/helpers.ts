@@ -1,4 +1,8 @@
-export function generatePaginationData(currentPage, limit, length) {
+export function generatePaginationData(
+    currentPage: number,
+    limit: number,
+    length: number,
+): { pageNumbers: (string | number)[] } {
     const pages = Math.ceil(length / limit);
 
     const generatePageNumbers = () => {
