@@ -2,7 +2,6 @@ import React from 'react';
 import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import UserTable from './UserTable';
-import * as t from '../../models/interfaces';
 
 function setup() {
     render(<UserTable />);
