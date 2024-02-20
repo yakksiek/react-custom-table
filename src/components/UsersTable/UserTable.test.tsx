@@ -69,12 +69,7 @@ describe('UserTable', () => {
 
         setup();
 
-        await waitFor(() => {
-            expect(screen.getByPlaceholderText('filter Age')).toBeInTheDocument();
-        });
-
         const searchInput = screen.getByPlaceholderText('filter Age');
-
         userEvent.type(searchInput, invalidAge);
         await waitFor(() => {
             expect(screen.getByText(/Could not find entries for the query./i)).toBeInTheDocument();
