@@ -3,11 +3,14 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Pagination from './Pagination';
+import * as t from '../../models/interfaces';
 
-function setup(mockSetPageOptions) {
+type SetPageOptionsFunc = (options: t.PageOptions) => void;
+
+function setup(mockSetPageOptions: SetPageOptionsFunc) {
     render(
         <Pagination
-            data={{ skip: 0, limit: 10, total: 100 }}
+            data={{ skip: 0, limit: 10, total: 100, users: [] }}
             setPageOptions={mockSetPageOptions}
             pageOptions={{ limit: 10, skip: 0, currentPage: 1 }}
         />,
