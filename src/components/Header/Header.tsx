@@ -6,9 +6,9 @@ import * as t from '../../models/interfaces';
 interface HeaderProps {
     columns: t.HeaderCell[];
     sorting: t.Sorting;
-    sortTable: (newSorting: t.Sorting) => t.Sorting;
-    handleSearch: ({ field, value }: { field: string; value: string }) => void;
-    filterQuery?: t.FilterQuery
+    sortTable: (newSorting: t.Sorting) => void;
+    handleSearch: t.HandleSearchFunction;
+    filterQuery?: t.FilterQuery;
 }
 
 function Header({ columns, sorting, sortTable, handleSearch, filterQuery }: HeaderProps) {

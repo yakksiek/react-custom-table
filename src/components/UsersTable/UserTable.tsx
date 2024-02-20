@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ChangeEvent } from 'react';
 
 import * as db from '../../data';
-// import * as t from '../../models/interfaces';
+import * as t from '../../models/interfaces';
 import { getUsers } from '../../api/usersProvider';
 import Header from '../Header';
 import Content from '../Content';
@@ -11,18 +11,18 @@ import Loader from '../Loader';
 import { StyledTable, StyledMessage, StyledSearchInput } from './UserTable.styled';
 
 function UserTable() {
-    const [data, setData] = useState(null);
-    const [error, setError] = useState(null);
+    const [data, setData] = useState<t.FetchedUsersData>({ users: [], total: 0, skip: 0, limit: 0 });
+    const [error, setError] = useState('');
     const [pageOptions, setPageOptions] = useState({ limit: 10, skip: 0, currentPage: 1 });
     const [filterQuery, setFilterQuery] = useState({ value: '', field: '', query: '' });
-    const [sorting, setSorting] = useState({ column: 'id', order: 'asc' });
+    const [sorting, setSorting] = useState<t.Sorting>({ column: 'id', order: 'asc' });
 
     useEffect(() => {
-        const fetchData = async options => {
+        const fetchData = async (options: t.UserFetchOptions) => {
             try {
                 const data = await getUsers(options);
                 setData(data);
-                setError(null);
+                setError('');
             } catch (err) {
                 setError('Failed to fetch data');
             }
@@ -34,17 +34,20 @@ function UserTable() {
 
     useEffect(() => {
         if (data && data.users) {
-            const sorted = sortUsers(data.users, sorting.column, sorting.order);
-            setData(prevData => ({ ...prevData, users: sorted }));
+            setData(prevData => {
+                const sortedUsers = sortUsers(prevData.users, sorting.column, sorting.order);
+                return { ...prevData, users: sortedUsers };
+            });
         }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sorting]);
 
-    const searchTable = newQuery => {
+    const searchTable = (newQuery: t.HandleSearchFunctionParams) => {
         setFilterQuery(prevQuery => ({ ...prevQuery, ...newQuery }));
     };
 
-    const sortTable = newSorting => {
+    const sortTable = (newSorting: t.Sorting) => {
         const { column: newColumn } = newSorting;
         setSorting(prevSorting => {
             if (newColumn === prevSorting.column) {
@@ -55,20 +58,23 @@ function UserTable() {
         });
     };
 
-    const sortUsers = (users, key, order = 'asc') => {
-        const newUsersArr = [...users];
+    const sortUsers = (users: t.User[], key: string, order: 'asc' | 'desc' = 'asc'): t.User[] => {
+        const newUsersArr: t.User[] = [...users];
         return newUsersArr.sort((a, b) => {
-            if (a[key] < b[key]) {
+            const keyA = a[key as keyof t.User];
+            const keyB = b[key as keyof t.User];
+
+            if (keyA < keyB) {
                 return order === 'asc' ? -1 : 1;
             }
-            if (a[key] > b[key]) {
+            if (keyA > keyB) {
                 return order === 'asc' ? 1 : -1;
             }
             return 0;
         });
     };
 
-    const onChangeHandler = e => {
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setFilterQuery(prevQuery => ({ ...prevQuery, query: e.target.value }));
     };
 
@@ -76,7 +82,7 @@ function UserTable() {
         return <div>Error: {error}</div>;
     }
 
-    if (!data)
+    if (Object.keys(data).length === 0)
         return (
             <div>
                 <Loader />

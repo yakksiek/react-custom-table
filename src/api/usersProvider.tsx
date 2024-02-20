@@ -1,19 +1,8 @@
+import * as t from '../models/interfaces';
+
 const url = 'https://dummyjson.com/users';
 
-interface UserFetchOptions {
-    query?: string;
-    value?: string;
-    field?: string;
-    limit?: number;
-    skip?: number;
-}
-
-interface FetchStatus {
-    ok: boolean;
-    status: number;
-}
-
-export function getUsers(options: UserFetchOptions = {}) {
+export function getUsers(options: t.UserFetchOptions = {}) {
     let optionsURL = '';
     const query = options.query || '';
 
@@ -26,7 +15,7 @@ export function getUsers(options: UserFetchOptions = {}) {
     return _fetch(optionsURL);
 }
 
-function _fetch(optionsURL: string = ''): Promise<FetchStatus> {
+function _fetch(optionsURL: string = ''): Promise<t.FetchedUsersData> {
     return fetch(`${url}${optionsURL}`).then(resp => {
         if (resp.ok) {
             return resp.json();

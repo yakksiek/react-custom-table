@@ -1,4 +1,6 @@
-export const columns = [
+import * as t from '../models/interfaces';
+
+export const columns: t.HeaderCell[] = [
     {
         title: 'id',
         field: 'id',

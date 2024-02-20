@@ -6,15 +6,8 @@ import Button from '../Button';
 import { StyledNagivationList, StyledNavigation, StyledSelect } from './Pagination.styled';
 import * as t from '../../models/interfaces';
 
-interface Data {
-    users: t.User[];
-    total: number;
-    skip: number;
-    limit: number;
-}
-
 interface PaginationProps {
-    data: Data;
+    data: t.FetchedUsersData;
     setPageOptions: (options: t.PageOptions) => void;
     pageOptions: t.PageOptions;
 }

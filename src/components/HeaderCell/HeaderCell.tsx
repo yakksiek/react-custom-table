@@ -10,8 +10,8 @@ import { StyledHeader, StyledTableHeader, StyledSortButton } from './HeaderCell.
 interface HeaderCellProps {
     columnData: t.HeaderCell;
     sorting: t.Sorting;
-    sortTable: (newSorting: t.Sorting) => t.Sorting;
-    handleSearch: ({ field, value }: { field: string; value: string }) => void;
+    sortTable: (newSorting: t.Sorting) => void;
+    handleSearch: t.HandleSearchFunction;
     filterQuery?: t.FilterQuery;
 }
 
