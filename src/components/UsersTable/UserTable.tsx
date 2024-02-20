@@ -82,7 +82,7 @@ function UserTable() {
         return <div>Error: {error}</div>;
     }
 
-    if (Object.keys(data).length === 0)
+    if (Object.keys(data.users).length === 0)
         return (
             <div>
                 <Loader />
