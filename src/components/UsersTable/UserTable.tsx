@@ -8,7 +8,7 @@ import Content from '../Content';
 import Pagination from '../Pagination';
 import Loader from '../Loader';
 
-import { StyledContainer, StyledTable, StyledMessage, StyledSearchInput } from './UserTable.styled';
+import { StyledTable, StyledMessage, StyledSearchInput, StyledLoaderContainer } from './UserTable.styled';
 
 function UserTable() {
     const [data, setData] = useState<t.FetchedUsersData>({ users: [], total: 0, skip: 0, limit: 0 });
@@ -87,35 +87,34 @@ function UserTable() {
     }
 
     return (
-        <StyledContainer>
-            <StyledSearchInput
-                aria-label='query-search'
-                name='query-search'
-                placeholder='search users'
-                onChange={onChangeHandler}
-                value={filterQuery.query}
-            />
-            {loading ? (
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Loader />
-                </div>
-            ) : (
-                <StyledTable>
-                    <Header
-                        columns={db.columns}
-                        sorting={sorting}
-                        handleSearch={searchTable}
-                        sortTable={sortTable}
-                        filterQuery={filterQuery}
-                    />
-                    <Content entries={data.users} columns={db.columns} />
-                </StyledTable>
-            )}
+        <div>
+            <StyledLoaderContainer>
+                {loading && <Loader />}
+                <StyledSearchInput
+                    aria-label='query-search'
+                    name='query-search'
+                    placeholder='search users'
+                    onChange={onChangeHandler}
+                    value={filterQuery.query}
+                />
+            </StyledLoaderContainer>
+
+            <StyledTable>
+                <Header
+                    columns={db.columns}
+                    sorting={sorting}
+                    handleSearch={searchTable}
+                    sortTable={sortTable}
+                    filterQuery={filterQuery}
+                />
+                <Content entries={data.users} columns={db.columns} />
+            </StyledTable>
+
             {data.total > 0 && <Pagination data={data} setPageOptions={setPageOptions} pageOptions={pageOptions} />}
             {data.total === 0 && data.users.length === 0 && !loading && (
                 <StyledMessage>Could not find entries for the query.</StyledMessage>
             )}
-        </StyledContainer>
+        </div>
     );
 }
 

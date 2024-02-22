@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 8,
+            "activePatchIndex": 10,
             "patches": [
                 {
                     "date": 1705316293637,
@@ -40,6 +40,14 @@
                 {
                     "date": 1706201176850,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n-\n-\n .App {\n     text-align: center;\n+    max-width: 1300px;\n+    ma\n }\n \n .App-logo {\n     height: 40vmin;\n"
+                },
+                {
+                    "date": 1708627675227,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n .App {\n     text-align: center;\n-    max-width: 1300px;\n+    /* max-width: 1300px; */\n     margin: 0 auto;\n }\n \n .App-logo {\n"
+                },
+                {
+                    "date": 1708627685814,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,38 +3,4 @@\n     max-width: 1300px;\n     margin: 0 auto;\n }\n \n-.App-logo {\n-    height: 40vmin;\n-    pointer-events: none;\n-}\n-\n-@media (prefers-reduced-motion: no-preference) {\n-    .App-logo {\n-        animation: App-logo-spin infinite 20s linear;\n-    }\n-}\n-\n-.App-header {\n-    background-color: #0f1516;\n-    min-height: 100vh;\n-    display: flex;\n-    flex-direction: column;\n-    align-items: center;\n-    justify-content: center;\n-    font-size: calc(10px + 2vmin);\n-    color: white;\n-}\n-\n-.App-link {\n-    color: #61dafb;\n-}\n-\n-@keyframes App-logo-spin {\n-    from {\n-        transform: rotate(0deg);\n-    }\n-    to {\n-        transform: rotate(360deg);\n-    }\n-}\n"
                 }
             ],
             "date": 1705316293637,
