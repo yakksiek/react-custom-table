@@ -16,6 +16,8 @@ The React Table application is designed to demonstrate the implementation of tab
 
 4. **Styled Components**
 
+5. **TypeScript**
+
 &nbsp;
 
 ## 💡 Technologies
@@ -23,6 +25,7 @@ The React Table application is designed to demonstrate the implementation of tab
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
 ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
@@ -35,25 +38,25 @@ The React Table application is designed to demonstrate the implementation of tab
 **Example of userProvider test**
 
 ```javascript
-it('should fetch users with filter options', async () => {
-    const spy = jest.spyOn(window, 'fetch');
+ it('should fetch users with filter options', async () => {
+        const mockFetch = jest.spyOn(window, 'fetch') as jest.MockedFunction<typeof window.fetch>;
 
-    window.fetch.mockResolvedValueOnce({
-        ok: true,
-        json: async () => ({ users: [] }),
+        mockFetch.mockResolvedValueOnce({
+            ok: true,
+            json: async () => ({ users: [] }),
+        } as Response);
+
+        const filterOptions = { field: 'firstName', value: 'Miles' };
+        const data = await getUsers(filterOptions);
+
+        expect(data.users).toEqual([]);
+        expect(mockFetch).toHaveBeenCalledTimes(1);
+        expect(mockFetch).toHaveBeenCalledWith(
+            `https://dummyjson.com/users/filter?key=${filterOptions.field}&value=${filterOptions.value}`,
+        );
+
+        mockFetch.mockRestore();
     });
-
-    const filterOptions = { field: 'firstName', value: 'Miles' };
-    const data = await getUsers(filterOptions);
-
-    expect(data.users).toEqual([]);
-    expect(window.fetch).toHaveBeenCalledTimes(1);
-    expect(window.fetch).toHaveBeenCalledWith(
-        `https://dummyjson.com/users/filter?key=${filterOptions.field}&value=${filterOptions.value}`,
-    );
-
-    spy.mockRestore();
-});
 ```
 
 &nbsp;
@@ -65,47 +68,35 @@ function setup() {
     render(<UserTable />);
 }
 
-jest.spyOn(window, 'fetch');
+describe('UserTable', () => {
+    it('displays user data correctly after fetching', async () => {
+        const mockUsersData = {
+            users: [
+                { id: 1, firstName: 'John', lastName: 'Doe', email: 'john@example.com' },
+                { id: 2, firstName: 'Alan', lastName: 'Pope', email: 'alan@pope.com' },
+            ],
+        };
 
-it('should show an error when failed to fetch data', async () => {
-    setup();
+        const mockFetch = jest.spyOn(window, 'fetch') as jest.MockedFunction<typeof window.fetch>;
 
-    window.fetch.mockRejectedValueOnce(new Error('Failed to fetch data'));
+        mockFetch.mockResolvedValueOnce({
+            ok: true,
+            json: async () => {
+                return { users: mockUsersData.users };
+            },
+        } as Response);
 
-    await waitFor(() => {
-        expect(screen.getByText('Error: Failed to fetch data')).toBeInTheDocument();
-    });
+        setup();
 
-    fetch.mockRestore();
-});
-
-it('displays user data correctly after fetching', async () => {
-    const mockUsersData = {
-        users: [
-            { id: 1, firstName: 'John', lastName: 'Doe', email: 'john@example.com' },
-            { id: 2, firstName: 'Alan', lastName: 'Pope', email: 'alan@pope.com' },
-        ],
-    };
-
-    jest.spyOn(window, 'fetch');
-
-    window.fetch.mockResolvedValueOnce({
-        ok: true,
-        json: async () => {
-            return { users: mockUsersData.users };
-        },
-    });
-
-    setup();
-
-    await waitFor(() => {
-        mockUsersData.users.forEach(user => {
-            expect(screen.getByText(user.firstName)).toBeInTheDocument();
-            expect(screen.getByText(user.email)).toBeInTheDocument();
+        await waitFor(() => {
+            mockUsersData.users.forEach(user => {
+                expect(screen.getByText(user.firstName)).toBeInTheDocument();
+                expect(screen.getByText(user.email)).toBeInTheDocument();
+            });
         });
-    });
 
-    fetch.mockRestore();
+        mockFetch.mockRestore();
+    });
 });
 ```
 
@@ -114,22 +105,28 @@ it('displays user data correctly after fetching', async () => {
 **Example of Pagination test**
 
 ```javascript
-function setup(mockSetPageOptions) {
+type SetPageOptionsFunc = (options: t.PageOptions) => void;
+
+function setup(mockSetPageOptions: SetPageOptionsFunc) {
     render(
         <Pagination
-            data={{ skip: 0, limit: 10, total: 100 }}
+            data={{ skip: 0, limit: 10, total: 100, users: [] }}
             setPageOptions={mockSetPageOptions}
             pageOptions={{ limit: 10, skip: 0, currentPage: 1 }}
         />,
     );
 }
 
-it('changes to the respective page when clicking a button', () => {
-    setup(mockSetPageOptions);
+describe('Pagination', () => {
+    const mockSetPageOptions = jest.fn();
 
-    const pageNumberButton = screen.getByText('2');
-    userEvent.click(pageNumberButton);
-    expect(screen.getByText(/page 2/i)).toBeInTheDocument();
+    it('changes to the respective page when clicking a button', () => {
+        setup(mockSetPageOptions);
+
+        const pageNumberButton = screen.getByText('2');
+        userEvent.click(pageNumberButton);
+        expect(screen.getByText(/page 2/i)).toBeInTheDocument();
+    });
 });
 ```
 
