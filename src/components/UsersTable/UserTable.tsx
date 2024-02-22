@@ -8,23 +8,28 @@ import Content from '../Content';
 import Pagination from '../Pagination';
 import Loader from '../Loader';
 
-import { StyledTable, StyledMessage, StyledSearchInput } from './UserTable.styled';
+import { StyledContainer, StyledTable, StyledMessage, StyledSearchInput } from './UserTable.styled';
 
 function UserTable() {
     const [data, setData] = useState<t.FetchedUsersData>({ users: [], total: 0, skip: 0, limit: 0 });
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(true);
     const [pageOptions, setPageOptions] = useState({ limit: 10, skip: 0, currentPage: 1 });
     const [filterQuery, setFilterQuery] = useState({ value: '', field: '', query: '' });
     const [sorting, setSorting] = useState<t.Sorting>({ column: 'id', order: 'asc' });
 
     useEffect(() => {
         const fetchData = async (options: t.UserFetchOptions) => {
+            setLoading(true);
             try {
                 const data = await getUsers(options);
+                console.log(data);
                 setData(data);
                 setError('');
             } catch (err) {
                 setError('Failed to fetch data');
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -82,15 +87,8 @@ function UserTable() {
         return <div>Error: {error}</div>;
     }
 
-    if (Object.keys(data.users).length === 0)
-        return (
-            <div>
-                <Loader />
-            </div>
-        );
-
     return (
-        <div>
+        <StyledContainer>
             <StyledSearchInput
                 aria-label='query-search'
                 name='query-search'
@@ -98,21 +96,27 @@ function UserTable() {
                 onChange={onChangeHandler}
                 value={filterQuery.query}
             />
-            <StyledTable>
-                <Header
-                    columns={db.columns}
-                    sorting={sorting}
-                    handleSearch={searchTable}
-                    sortTable={sortTable}
-                    filterQuery={filterQuery}
-                />
-                <Content entries={data.users} columns={db.columns} />
-            </StyledTable>
+            {loading ? (
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Loader />
+                </div>
+            ) : (
+                <StyledTable>
+                    <Header
+                        columns={db.columns}
+                        sorting={sorting}
+                        handleSearch={searchTable}
+                        sortTable={sortTable}
+                        filterQuery={filterQuery}
+                    />
+                    <Content entries={data.users} columns={db.columns} />
+                </StyledTable>
+            )}
             {data.total > 0 && <Pagination data={data} setPageOptions={setPageOptions} pageOptions={pageOptions} />}
-            {data.total === 0 && data.users.length === 0 && (
+            {data.total === 0 && data.users.length === 0 && !loading && (
                 <StyledMessage>Could not find entries for the query.</StyledMessage>
             )}
-        </div>
+        </StyledContainer>
     );
 }
 

@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+export const StyledContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+`;
+
 export const StyledTable = styled.table`
     width: 100%;
     border-collapse: collapse;
@@ -19,5 +26,5 @@ export const StyledSearchInput = styled.input`
     border-radius: 100vh;
     min-width: 250px;
     color: #fff;
+    align-self: flex-end;
 `;
-
