@@ -5,7 +5,7 @@ import { UilAngleDoubleDown } from '@iconscout/react-unicons';
 import * as t from '../../models/interfaces';
 import Input from '../Input';
 
-import { StyledHeader, StyledTableHeader, StyledSortButton } from './HeaderCell.styled';
+import { StyledHeader, StyledTableHeader, StyledSortButton, StyledButtonContainer } from './HeaderCell.styled';
 
 interface HeaderCellProps {
     columnData: t.HeaderCell;
@@ -40,7 +40,7 @@ function HeaderCell({ columnData, sorting, sortTable, handleSearch, filterQuery 
                 onMouseOut={handleMouseOut}
             >
                 {title}
-                <div>
+                <StyledButtonContainer>
                     {isDescSorting && (
                         <StyledSortButton>
                             <UilAngleDoubleUp color='rgb(195 154 100)' />
@@ -51,13 +51,13 @@ function HeaderCell({ columnData, sorting, sortTable, handleSearch, filterQuery 
                             <UilAngleDoubleDown color='rgb(195 154 100)' />
                         </StyledSortButton>
                     )}
-                </div>
 
-                {showSort && !isAscSorting && !isDescSorting && (
-                    <StyledSortButton>
-                        <UilAngleDoubleDown color='white' />
-                    </StyledSortButton>
-                )}
+                    {showSort && !isAscSorting && !isDescSorting && (
+                        <StyledSortButton>
+                            <UilAngleDoubleDown color='white' />
+                        </StyledSortButton>
+                    )}
+                </StyledButtonContainer>
             </StyledHeader>
             <hr />
             {filter && <Input data={columnData} handleSearch={handleSearch} filterQuery={filterQuery} />}

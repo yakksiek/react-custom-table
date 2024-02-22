@@ -14,6 +14,10 @@ export const StyledSortButton = styled.button`
     cursor: pointer;
 `;
 
+export const StyledButtonContainer = styled.div`
+    min-width: 2rem;
+`;
+
 export const StyledHeader = styled.header`
     display: flex;
     justify-content: space-between;
