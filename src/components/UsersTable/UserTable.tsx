@@ -23,7 +23,6 @@ function UserTable() {
             setLoading(true);
             try {
                 const data = await getUsers(options);
-                console.log(data);
                 setData(data);
                 setError('');
             } catch (err) {
